@@ -54,6 +54,7 @@ flutter:
     - assets/app_bar/
     - assets/home_page/
     - assets/navigation_bar/
+    - assets/profile/
   fonts:
     - family: SF Pro Display
       fonts:

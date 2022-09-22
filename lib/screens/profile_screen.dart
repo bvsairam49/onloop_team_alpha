@@ -1,19 +1,329 @@
 import 'package:flutter/material.dart';
 
+import '../utils/common_widgets/capture_metrics_widget.dart';
+import '../utils/common_widgets/onloop_app_bar.dart';
+import '../utils/common_widgets/profile_metric_widget.dart';
+import '../utils/misc/app_text_theme.dart';
+import '../utils/shared/profile_avatar.dart';
+
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({Key key}) : super(key: key);
+  const ProfileScreen({Key key, this.isSelfUser = true}) : super(key: key);
+  final bool isSelfUser;
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _ProfileScreenState extends State<ProfileScreen>
+    with SingleTickerProviderStateMixin {
+  TabController _tabController;
+  ScrollController _scrollController;
+  double height = 200;
+  final Duration _captureTypeSelectionAnimationDuration =
+      const Duration(milliseconds: 500);
+
+  @override
+  void initState() {
+    _tabController = TabController(
+      length: 2,
+      vsync: this,
+      animationDuration: const Duration(milliseconds: 1000),
+    );
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('profile'),
+    return Scaffold(
+      bottomNavigationBar: (widget.isSelfUser)
+          ? Container(
+              height: 12,
+              color: const Color(0xFFFFFFFF),
+            )
+          : const SizedBox.shrink(),
+      backgroundColor: Colors.white,
+      appBar: PreferredSize(
+        child: Container(),
+        preferredSize: const Size.fromHeight(10),
       ),
+      body: DefaultTabController(
+        length: 2,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _profilePictureView(),
+            SizedBox(height: 48, child: _selectFeedbackAppBar()),
+            Expanded(child: _pageBuilder()),
+          ],
+        ),
+
+        // NestedScrollView(
+        //     controller: _scrollController,
+        //     headerSliverBuilder: (context, innerBoxIsScrolled) {
+        //       return [
+
+        //         // SliverAppBar(
+        //         //     elevation: 0,
+        //         //     backgroundColor: Colors.white,
+        //         //     pinned: true,
+        //         //     expandedHeight: height - 35,
+        //         //     flexibleSpace: Stack(
+        //         //       children: [
+        //         //         //_minimizedProfileHeader(ref),
+        //         //         SingleChildScrollView(
+        //         //           child: _profilePictureView(),
+        //         //         )
+        //         //       ],
+        //         //     ))
+
+        //         // SliverPersistentHeader(
+        //         //   delegate: _SliverAppBarDelegate(
+        //         //     _selectFeedbackAppBar(),
+        //         //   ),
+        //         //   pinned: true,
+        //         // )
+        //       ];
+        //     },
+        //     body: Container(
+        //         color: const Color(0xffF6FAFD),
+        //         child: Column(
+        //           children: const [
+        //             SizedBox()
+        //             // if (!_isSelf &&
+        //             //     _captureTagFilter.sentiment !=
+        //             //         CaptureTagSentiment.neutral &&
+        //             //     widget.colleague?.userRef != null &&
+        //             //     widget.colleague?.connectedStatus ==
+        //             //         ConnectedStatus.connected)
+        //             //   _captureRequestButton(),
+        //             // Expanded(child: _pageBuilder(_captureTagFilter)),
+        //             // if (!_isSelf) _addFeedbackButton(),
+        //           ],
+        //         ))),
+      ),
+    );
+  }
+
+  void _updateState(int index) {
+    setState(() {
+      switch (index) {
+        case 1:
+          break;
+
+        default:
+          break;
+      }
+    });
+  }
+
+  TabBar _selectFeedbackAppBar() {
+    return TabBar(
+      padding: EdgeInsets.zero,
+      indicatorColor: const Color(0xFF4F697C),
+      controller: _tabController,
+      onTap: _updateState,
+      tabs: [
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 8.0,
+            vertical: 5.0,
+          ),
+          child: AnimatedCrossFade(
+            firstChild: Image.asset(
+              'assets/profile/celebrate_active.png',
+            ),
+            secondChild: Image.asset(
+              'assets/profile/celebrate_disabled.png',
+            ),
+            duration: _captureTypeSelectionAnimationDuration,
+            crossFadeState: CrossFadeState.showFirst,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 8.0,
+            vertical: 5.0,
+          ),
+          child: AnimatedCrossFade(
+            firstChild: Image.asset(
+              'assets/profile/improve_active.png',
+            ),
+            secondChild: Image.asset(
+              'assets/profile/improve_disabled.png',
+            ),
+            duration: _captureTypeSelectionAnimationDuration,
+            crossFadeState: CrossFadeState.showSecond,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _profilePictureView() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        (!widget.isSelfUser)
+            ? Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 1, 0),
+                child: OnLoopAppBar.backButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              )
+            : const SizedBox(width: 70),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const ProfileAvatar(
+              radius: 24,
+              enableEmoji: false,
+              showInitials: false,
+              name: 'Sairam',
+              image: NetworkImage(
+                'https://i.picsum.photos/id/923/200/200.jpg?hmac=3VHvOqFmO1AmGdpW-XcIVVb5CSOm5AwgyYRt9jYWAvo',
+              ),
+              borderColor: Color(0xFFF6FAFD),
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.5,
+              child: Text('Venkata sairam', //_colleague?.name,
+                  style: AppTextTheme.poppins(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: const Color(0xFF4F697C),
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  textAlign: TextAlign.center),
+            ),
+            const SizedBox(height: 2),
+            Row(
+              children: [
+                Text(
+                  'Myself',
+                  style: AppTextTheme.poppins(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w500,
+                    color: const Color(0xFF5C798E),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 12),
+          ], //ninisd
+        ),
+        const SizedBox(
+          width: 60,
+        )
+      ],
+    );
+  }
+
+  // Builds the content of the page after recieving a snapshot of the colleague.
+  Widget _pageBuilder() {
+    return TabBarView(
+      physics: const NeverScrollableScrollPhysics(),
+      controller: _tabController,
+      children: const [
+        CelebrateTabView(
+          title: 'Captures',
+        ),
+        CelebrateTabView(
+          title: 'Improves',
+        )
+        // CelebrateTabView(
+        //   captureType: CaptureTagSentiment.positive,
+        //   colleague: _colleague,
+        //   capturetagfilter: _captureTagFilter,
+        // ),
+        // CelebrateTabView(
+        //   captureType: CaptureTagSentiment.negative,
+        //   colleague: _colleague,
+        //   capturetagfilter: _captureTagFilter,
+        // ),
+        // CelebrateTabView(
+        //   captureType: CaptureTagSentiment.neutral,
+        //   colleague: _colleague,
+        //   capturetagfilter: _captureTagFilter,
+        // ),
+      ],
+    );
+  }
+}
+
+class CelebrateTabView extends StatelessWidget {
+  const CelebrateTabView({Key key, this.title}) : super(key: key);
+
+  final String title;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: AppTextTheme.poppins(
+              fontSize: 19,
+              fontWeight: FontWeight.w600,
+              color: const Color(0xFF4F697C),
+            ),
+          ),
+          const SizedBox(height: 10.0),
+          const ProfileScreenMetrics(
+            isCurrentUserIsManager: true,
+            totalCaptures: 10,
+            captureMadeOnMySelf: 9,
+            colleaguesInOrg: 100,
+          ),
+          const SizedBox(height: 10.0),
+          _getSuperPowersTagsView('Superpowers', const Color(0xFF4F697C))
+        ],
+      ),
+    );
+  }
+
+  Widget _getSuperPowersTagsView(String title, Color titleTextColor) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(title,
+              style: AppTextTheme.poppins(
+                  fontSize: 19.0,
+                  fontWeight: FontWeight.w600,
+                  color: titleTextColor)),
+        ),
+        GestureDetector(
+          onTap: () async {
+            // Navigator.push(
+            //     context,
+            //     TopTagsPage.pageRoute(TopTagsPage(
+            //       title: 'Top Tags',
+            //       colleague: widget.colleague,
+            //       streamProvider: widget.streamProvider,
+            //       filter: widget.filter,
+            //     )));
+          },
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text('View All',
+                  style: AppTextTheme.poppins(
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.w600,
+                      color: const Color(0xFF1B95DA))),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

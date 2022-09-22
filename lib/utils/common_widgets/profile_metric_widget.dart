@@ -15,7 +15,7 @@ import '../misc/screen_size_helper.dart';
 //  1. total self captures,
 //  2. total users in their organization (as of 2.1.0), and
 //  3. the user's people under development.
-class HomeScreenMetrics extends StatefulWidget {
+class ProfileScreenMetrics extends StatefulWidget {
   final bool isCurrentUserIsManager;
   final int totalCaptures;
   final int captureMadeOnMySelf;
@@ -23,7 +23,7 @@ class HomeScreenMetrics extends StatefulWidget {
   final int colleaguesInOrg;
   final bool isLoading;
 
-  const HomeScreenMetrics(
+  const ProfileScreenMetrics(
       {Key key,
       this.isCurrentUserIsManager = false,
       this.totalCaptures = 0,
@@ -37,7 +37,7 @@ class HomeScreenMetrics extends StatefulWidget {
   HomeScreenMetricsState createState() => HomeScreenMetricsState();
 }
 
-class HomeScreenMetricsState extends State<HomeScreenMetrics>
+class HomeScreenMetricsState extends State<ProfileScreenMetrics>
     with SingleTickerProviderStateMixin {
   bool _isSmallWidth;
   AnimationController _animationController;
@@ -101,13 +101,13 @@ class HomeScreenMetricsState extends State<HomeScreenMetrics>
           children: [
             widget.isCurrentUserIsManager
                 ? _homeScreenMetricsColumn(
-                    widget.totalCaptures, 'Total \nCaptures')
+                    widget.totalCaptures, 'Total \nCelebrates')
                 : _homeScreenMetricsColumn(
-                    widget.captureMadeOnMySelf, 'Captures made \non myself'),
+                    widget.captureMadeOnMySelf, 'Celebrates \nmade by myself'),
             _homeScreenMetricsColumn(
-                widget.colleaguesCaptures, 'Colleagues \nCaptured on'),
+                widget.colleaguesCaptures, 'Celebrates \nmade by myself'),
             _homeScreenMetricsColumn(
-                widget.colleaguesInOrg, 'Colleagues in \nmy org')
+                widget.colleaguesInOrg, 'Celebrates \nreceived')
           ],
         ),
       ),
@@ -128,13 +128,13 @@ class HomeScreenMetricsState extends State<HomeScreenMetrics>
                     style: AppTextTheme.poppins(
                         fontSize: _isSmallWidth ? 15.0 : 19.0,
                         fontWeight: FontWeight.w600,
-                        color: Colors.white),
+                        color: const Color(0xFF5C798E)),
                     textAlign: TextAlign.center),
                 Text(descriptionString,
                     style: AppTextTheme.poppins(
                         fontSize: _isSmallWidth ? 9.0 : 11.0,
                         fontWeight: FontWeight.w500,
-                        color: Colors.white,
+                        color: const Color(0xFF5C798E),
                         height: 1.15),
                     textAlign: TextAlign.center),
               ],

@@ -33,7 +33,7 @@ class _HomeColleaguesListViewState extends State<HomeColleaguesListView> {
             physics: const NeverScrollableScrollPhysics(),
             padding:
                 EdgeInsets.only(top: edgeInsetTop, bottom: edgeInsetBottom),
-            itemCount: 1,
+            itemCount: 3,
             shrinkWrap: true,
             itemBuilder: (context, index) {
               return HomeColleagueCard();

@@ -62,9 +62,9 @@ class _HomeColleagueCardState extends State<HomeColleagueCard> {
     TopTag(
         captureTag: CaptureTag(
             id: '5',
-            name: 'mizan',
+            name: 'Vineet',
             isCustom: false,
-            color: CaptureTagColor.green,
+            color: CaptureTagColor.yellow,
             tagDescription: 'delight',
             categoryDescription: 'd',
             disciplineName: 'a',
@@ -73,9 +73,9 @@ class _HomeColleagueCardState extends State<HomeColleagueCard> {
     TopTag(
         captureTag: CaptureTag(
             id: '6',
-            name: 'mizan',
+            name: 'Hilda',
             isCustom: false,
-            color: CaptureTagColor.green,
+            color: CaptureTagColor.blue,
             tagDescription: 'delight',
             categoryDescription: 'd',
             disciplineName: 'a',

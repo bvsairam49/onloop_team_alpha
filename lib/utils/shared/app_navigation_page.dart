@@ -211,6 +211,7 @@ class AppNavigationPageState extends State<AppNavigationPage>
             color: Colors.transparent,
           ),
           onPressed: (context) async {
+            debugPrint('hello');
             // GetIt.instance<AnalyticsService>().logButtonPress('add_feedback');
             // HapticFeedback.mediumImpact();
             // final captureCount = _user.captureCount ?? 0;

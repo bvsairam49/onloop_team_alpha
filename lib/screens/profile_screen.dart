@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:team_alpha/model/top_tags.dart';
+import 'package:team_alpha/screens/super_power_screen.dart';
 
+import '../utils/common_widgets/capture_detail_card.dart';
 import '../utils/common_widgets/capture_metrics_widget.dart';
 import '../utils/common_widgets/onloop_app_bar.dart';
 import '../utils/common_widgets/profile_metric_widget.dart';
 import '../utils/misc/app_text_theme.dart';
 import '../utils/shared/profile_avatar.dart';
+import '../utils/shared/shared_button.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key key, this.isSelfUser = true}) : super(key: key);
@@ -21,6 +25,97 @@ class _ProfileScreenState extends State<ProfileScreen>
   double height = 200;
   final Duration _captureTypeSelectionAnimationDuration =
       const Duration(milliseconds: 500);
+
+  final List<TopTag> _topTags = [
+    TopTag(
+        captureTag: CaptureTag(
+            id: '1',
+            name: 'improve',
+            isCustom: false,
+            color: CaptureTagColor.blue,
+            tagDescription: 'hello',
+            categoryDescription: 'd',
+            disciplineName: 'a',
+            type: '1'),
+        count: 1),
+    TopTag(
+        captureTag: CaptureTag(
+            id: '2',
+            name: 'hellp',
+            isCustom: false,
+            color: CaptureTagColor.orange,
+            tagDescription: 'hello',
+            categoryDescription: 'd',
+            disciplineName: 'a',
+            type: '1'),
+        count: 1),
+    TopTag(
+        captureTag: CaptureTag(
+            id: '3',
+            name: 'mizan',
+            isCustom: false,
+            color: CaptureTagColor.green,
+            tagDescription: 'delight',
+            categoryDescription: 'd',
+            disciplineName: 'a',
+            type: '1'),
+        count: 1),
+    TopTag(
+        captureTag: CaptureTag(
+            id: '4',
+            name: 'mizan',
+            isCustom: false,
+            color: CaptureTagColor.green,
+            tagDescription: 'delight',
+            categoryDescription: 'd',
+            disciplineName: 'a',
+            type: '1'),
+        count: 1),
+    TopTag(
+        captureTag: CaptureTag(
+            id: '5',
+            name: 'Vineet',
+            isCustom: false,
+            color: CaptureTagColor.yellow,
+            tagDescription: 'delight',
+            categoryDescription: 'd',
+            disciplineName: 'a',
+            type: '1'),
+        count: 1),
+    TopTag(
+        captureTag: CaptureTag(
+            id: '6',
+            name: 'Hilda',
+            isCustom: false,
+            color: CaptureTagColor.blue,
+            tagDescription: 'delight',
+            categoryDescription: 'd',
+            disciplineName: 'a',
+            type: '1'),
+        count: 1),
+    TopTag(
+        captureTag: CaptureTag(
+            id: '7',
+            name: 'Hilda',
+            isCustom: false,
+            color: CaptureTagColor.blue,
+            tagDescription: 'delight',
+            categoryDescription: 'd',
+            disciplineName: 'a',
+            type: '1'),
+        count: 1),
+    TopTag(
+        captureTag: CaptureTag(
+            id: '8',
+            name: 'Hilda',
+            isCustom: false,
+            color: CaptureTagColor.blue,
+            tagDescription: 'delight',
+            categoryDescription: 'd',
+            disciplineName: 'a',
+            type: '1'),
+        count: 1)
+  ];
 
   @override
   void initState() {
@@ -229,12 +324,11 @@ class _ProfileScreenState extends State<ProfileScreen>
     return TabBarView(
       physics: const NeverScrollableScrollPhysics(),
       controller: _tabController,
-      children: const [
-        CelebrateTabView(
-          title: 'Captures',
-        ),
+      children: [
+        CelebrateTabView(title: 'Captures', topTags: _topTags),
         CelebrateTabView(
           title: 'Improves',
+          topTags: _topTags,
         )
         // CelebrateTabView(
         //   captureType: CaptureTagSentiment.positive,
@@ -257,12 +351,14 @@ class _ProfileScreenState extends State<ProfileScreen>
 }
 
 class CelebrateTabView extends StatelessWidget {
-  const CelebrateTabView({Key key, this.title}) : super(key: key);
+  const CelebrateTabView({Key key, this.title, this.topTags}) : super(key: key);
 
   final String title;
+  final List<TopTag> topTags;
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      color: const Color(0xFFF6FAFD),
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -283,13 +379,48 @@ class CelebrateTabView extends StatelessWidget {
             colleaguesInOrg: 100,
           ),
           const SizedBox(height: 10.0),
-          _getSuperPowersTagsView('Superpowers', const Color(0xFF4F697C))
+          _getSuperPowersTagsView(
+              context, 'Superpowers', const Color(0xFF4F697C)),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(12.0),
+              boxShadow: const [
+                BoxShadow(
+                    color: Color.fromRGBO(119, 131, 145, 0.04),
+                    blurRadius: 2.0,
+                    offset: Offset(0, 0)),
+                BoxShadow(
+                    color: Color.fromRGBO(50, 50, 71, 0.044),
+                    blurRadius: 8.0,
+                    offset: Offset(0, 3))
+              ],
+            ),
+            child: _topTagsFutureBuilder(topTags),
+          ),
+          const SizedBox(height: 15.0),
+          Text(
+            'Capture history',
+            style: AppTextTheme.poppins(
+              fontSize: 19,
+              fontWeight: FontWeight.w600,
+              color: const Color(0xFF4F697C),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          CaptureDetailCard(
+            showShareButton: false,
+            topTag: topTags,
+          )
         ],
       ),
     );
   }
 
-  Widget _getSuperPowersTagsView(String title, Color titleTextColor) {
+  Widget _getSuperPowersTagsView(
+      BuildContext context, String title, Color titleTextColor) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -303,14 +434,11 @@ class CelebrateTabView extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () async {
-            // Navigator.push(
-            //     context,
-            //     TopTagsPage.pageRoute(TopTagsPage(
-            //       title: 'Top Tags',
-            //       colleague: widget.colleague,
-            //       streamProvider: widget.streamProvider,
-            //       filter: widget.filter,
-            //     )));
+            Navigator.of(context, rootNavigator: true)
+                .push(SuperPowerScreen.pageRoute(SuperPowerScreen(
+              title: 'Superpowers',
+              topTagList: topTags,
+            )));
           },
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -323,6 +451,47 @@ class CelebrateTabView extends StatelessWidget {
             ],
           ),
         ),
+      ],
+    );
+  }
+
+  Widget _topTagsFutureBuilder(List<TopTag> topTags) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: _colleagueTopTags(topTags),
+    );
+  }
+
+  Widget _colleagueTopTags(List<TopTag> topTags) {
+    final topTagCells = topTags.map((topTag) {
+      final captureTag = topTag.captureTag;
+      return SharedButtons.captureTagButtonV3(
+        tag: captureTag,
+        disableInkSplash: true,
+        onPressed: () async {
+          // Tags on colleague card.
+          // KeyboardHiderHelper.hideKeyboard(context);
+          // await _navigateToColleagueDetails(colleague);
+        },
+      );
+    }).toList();
+
+    int noOfEmptyCellsRequired = 3 - topTagCells.length;
+
+    for (int counter = 0; counter < noOfEmptyCellsRequired; counter++) {
+      final emptyCell = SharedButtons.emptyCaptureTagButton();
+      topTagCells.add(emptyCell);
+    }
+
+    return Row(
+      children: [
+        Expanded(
+          child: Wrap(
+            spacing: 8.0,
+            runSpacing: 8.0,
+            children: topTagCells,
+          ),
+        )
       ],
     );
   }

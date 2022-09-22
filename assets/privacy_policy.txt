@@ -1,0 +1,166 @@
+Privacy Policy
+
+Updated at 2022/05/25 
+
+OnLoop Pte. Ltd. (“OnLoop”, “we”, “our” or “us”) is committed to protecting your privacy. OnLoop does not own your data, nor do we sell it to others or use it for advertising. This Privacy Policy explains how your personal information is collected, used, and disclosed by OnLoop.
+
+This Privacy Policy applies to the OnLoop platform, including the associated OnLoop mobile and desktop applications (collectively, our “Service(s)”), onloop.io and other OnLoop websites (collectively, the “Websites”) and other interactions (e.g. customer service inquiries, user conferences, etc.) you may have with OnLoop. 
+
+Your Consent
+
+By accepting this Privacy Policy or accessing or using our Service, you signify that you have read, understood, and agree to our collection, storage, use, and disclosure of your personal information as described in this Privacy Policy and our Terms of Use.
+
+OnLoop may change this Privacy Policy from time to time. Laws, regulations, and industry standards evolve, which may make those changes necessary, or we may make changes to our Service or business. We will post the changes to this page and encourage you to review our Privacy Policy to stay informed. If we make changes that materially alter your privacy rights, OnLoop will provide additional notice, such as via email or through the Service. Immediately after such notice has been provided to you, continued use of the Service constitutes your understanding, consent and acceptance of this Privacy Policy.
+
+
+Definitions
+
+Terms utilized in this Privacy Policy have meanings as defined below:
+“Captures” refers to any content written as self-reflection or feedback.
+“Learn Content” refers to articles, videos, podcasts available in the Learn Feed posted by you or your Team.
+“Learn Feed” refers to the section of our Service where the Learn Content is available to you.
+“Team” refers to the users you add to your Team tab, that are OnLoop users and have agreed to this Privacy Policy and our Terms of Use.
+“personal information” means information about a living individual (a natural person) who can be identified from that information (or from that and other information either in our possession or likely to come into our possession), and any information about the individual associated with that information, and includes personal data, personally identifiable information and equivalent information under applicable privacy and data protection laws.
+
+
+What Information Do We Collect?
+
+We collect personal information when you provide it to us and when you use our Service, as further described below.
+
+A. Information You Provide to Us
+
+Account Creation: When you create an account or otherwise use the Service(s),  you may only do so using third party authentication services and we collect information such as your name, email address, optional phone number, optional LinkedIn URL, an optional profile photo and any other information we ask to set you up with an account from such third parties (as described further in the third party sources section below). 
+
+Your Mobile Media: We may also collect information from mobile devices for a better user experience, such as contacts list and photo gallery by allowing you to upload any picture straight from your phone.  These features are optional and subject to you providing us with consent.
+
+Your Captures Information: The content created by you in your Captures will be stored and accessible through the Service. This information is by default only accessible to you. Your Captures will be accessible to the users you decide to share it with.
+
+Your Communications with Us: We collect personal information from you such as email address, phone number, or mailing address when you request information about our Service, register for our pilot and/or waitlist, request customer or technical support, or otherwise communicate with us. We also collect the contents of messages or attachments that you may send to us, as well as other information you choose to provide, and that may be associated with your communications.
+
+Payment Information: When you choose to subscribe for Pro, or Premium plans on the Service, we will collect information relating to the subscription and payment information allowing you to pay us. We use third-party payment providers to process payments on the Service(s). 
+
+Newsletters: When you sign up to our newsletter and other electronic alerts, we collect your name, email address, user preferences and any other information you provide to us when you ask to receive our newsletter or other alerts.
+
+Surveys: We may contact you to participate in surveys. If you decide to participate, you may be asked to provide certain information which may include personal information.
+
+Team: If you choose to invite someone from your Team to use the Service(s), we will collect their name, email address and any other information you choose to include in the invitation. We will use this data to invite him or her to join the Service(s). We store this data for the sole purpose of sending invitations. If your team member would like us to delete his or her data, they can do so by opting-out using the functionality in the app provided for such purpose or by contacting us at support@onloop.com.
+
+Learn Content: When you share Learn Content through our Service, we collect the information you include in those shares. If you follow a link on our Learn Feed to another website, the owner of that website will have its own privacy policy relating to your personal information. We suggest you review that website’s privacy policy before you provide personal information to that owner or website.
+
+Some of the personal information that we collect directly from you may be mandatory and some may be optional.  We will let you know which of these applies at the time we collect the relevant personal information.  While you do not have to provide us with some of the information that we may request, this might mean that our products and services may not perform as well as they should, or that we may not be able to provide some parts of the Service to you.
+
+B. Information Collected Automatically
+
+Automatic Data Collection: We keep track of certain information about you when you visit and interact with any of our Services. This information may include your Internet protocol (IP) address, user settings, MAC address, cookie identifiers, mobile carrier, mobile advertising and other unique identifiers, details about your browser, operating system or device, location information (including inferred location based off of your IP address), Internet service provider, pages that you visit before, during and after using the Service, information about the links you click, information about how you interact with the Service, including the frequency and duration of your activities, and other information about how you use the Service. Information we collect may be associated with accounts and other devices.
+
+Cookies, Pixel Tags/Web Beacons, and Analytics Information: We, as well as third parties that provide content or other functionality on the Service, may use cookies, pixel tags, local storage, and other technologies (“Technologies”) to automatically collect information through the Service. Technologies are essentially small data files placed on your devices that allow us and our partners to record certain pieces of information whenever you visit or interact with our Service.
+Cookies: Cookies are small text files placed in device browsers to store their preferences. Most browsers allow you to block and delete cookies. However, if you do that, the Service may not work properly.
+Pixel Tags/Web Beacons: A pixel tag (also known as a web beacon) is a piece of code embedded in the Service that collects information about engagement on the Service. The use of a pixel tag allows us to record, for example, that a user has visited a particular web page or clicked on a particular advertisement. We may also include web beacons in e-mails to understand whether messages have been opened, acted on, or forwarded.
+If you follow a link on our Service to another website, the owner of that website will have its own cookies.  We suggest you review that website’s cookie policy before you visit that website.
+
+Analytics: We may also use third-party service providers to collect and process analytics and other information on our Service. These third-party service providers may use cookies, pixel tags, web beacons or other storage technology to collect and store analytics and other information. They have their own privacy policies addressing how they use the analytics and other information and we do not have access to, nor control over, third parties’ use of cookies or other tracking technologies.
+
+C. Third Party Sources
+
+Authentication Services: We collect personal information from third parties where you have authorised this. This includes accessing certain personal information from third party authentication services (e.g. Google, Microsoft, LinkedIn or Apple) if you login to your account with us using these services or otherwise provide us access to information from these sources. If you do not login using such third party authentication services and grant such access, we will not be able to provide our Service(s).  The third party provider that we use will be displayed and you can visit its privacy policy for further details on how it deals with personal information.
+
+
+How Do We Use The Information We Collect?
+
+Any of the information we collect from you may be used in one or more of the following ways:
+
+To enable you to access and use our Service(s).
+To verify your identity.
+To personalize your experience. Your information helps us to better respond to your individual needs, for example, by remembering whether you are a manager or an ambitious individual and targeting our communications to what you would find more useful; by setting up your Teams in the correct way; by connecting you with the people you work most closely with; or by recommending you Learn content based on your preferences. .
+To communicate with you by responding to your requests, comments and questions. If you contact us, we may use your information to respond.
+To process your payments and otherwise servicing your purchase orders.
+To send emails and other communications. We may send you service, technical and other administrative emails, messages, and other types of communications. We may also contact you to inform you about changes in our Service, our Service offerings, and important Service-related notices. In addition, we sometimes send emails about new product features, promotional communications or other news about OnLoop. These are marketing messages so you can control whether you receive them.
+To send you push notifications through our mobile app. You may at any time opt out from receiving these types of communications by changing the settings on your mobile device.
+To develop and provide search, learning, insights and additional features. OnLoop tries to make the Service as useful as possible for specific users. For example, we may improve search functionality by using your information to help determine and rank the relevance of content, provide insights based on historical use and predictive models to customize a Service experience, or create new features. We continually strive to improve our platform offerings based on the information and feedback we receive from you.
+To measure interest and engagement in our Service(s), including analyzing your usage of the Service(s). We may use personal information and other data about you to create de-identified and/or aggregated information. De-identified and/or aggregated information is not personal information, and we may use and disclose such information in a number of ways, including research, internal analysis, analytics, and any other legally permissible purposes.
+For any other purpose authorized by you or applicable law.
+
+
+How Long Do We Keep Your Information?
+
+We keep your personal information we receive for as long as you use our Service or as necessary to fulfill the purpose(s) for which it was collected, provide our Service(s), resolve disputes, establish legal defenses, conduct audits, pursue legitimate business purposes, enforce our agreements, and comply with applicable laws.
+
+International Transfers
+
+All information processed by us or our third party service providers  may be transferred, processed, and stored anywhere in the world, which may have data protection laws that are different from the laws where you live. We and/or some of these third parties will use cloud-based storage solutions.  We endeavor to safeguard your information consistent with the requirements of applicable laws, including the Singapore Personal Data Protection Act 2012 and the EU General Data Protection Regulation.
+
+Where relevant, we will ensure that your rights under any applicable law will be the same even if such information is transferred to and stored outside of Singapore or if you are not based in Singapore, outside of your country of origin.  You agree that we may transfer and store your personal data outside of Singapore, or if you are not based in Singapore, outside of your country of origin, provided all the requirements of applicable laws are complied with.
+
+
+How Do We Protect Your Information?
+
+We protect the information you provide from loss, misuse, and unauthorized access or disclosure. These steps take into account the sensitivity of the information we collect, process and store, and the current state of technology. Given the nature of communications and information processing technology, OnLoop cannot guarantee that information during transmission through the Internet or while stored on our systems or otherwise in our care will be absolutely safe from intrusion by others.
+
+By using the Service(s) or providing personal information to us, you agree that we may communicate with you electronically regarding security, privacy, and administrative issues relating to your use of the Service(s). If we learn of a security system’s breach, we may attempt to notify you electronically by posting a notice on the Service, by mail or by sending an email to you.
+
+You play an important role in keeping your personal information secure by maintaining the confidentiality of any accounts used in relation to our Service. You should not disclose your account to third parties.  Please notify us immediately if there is any unauthorised use of your account or any other breach of security.
+
+
+How We Share And Disclose Information?
+
+This section describes how OnLoop may share and disclose information. You determine your own policies and practices for the sharing and disclosure of the information, and OnLoop does not control how you choose to share or disclose information.
+Your Instructions. OnLoop will solely share and disclose your information in accordance with your instructions, and in compliance with applicable law and legal processes.
+Third Party Service Providers and Partners. We may engage third party companies or individuals as service providers or business partners to process personal information (aggregated or de-identified data) and support our business. These third parties may, for example, provide virtual computing and storage services, or we may share business information to develop strategic partnerships with Third Party Service providers to support our users. These include:
+Google Cloud Platform
+Firebase
+OpenAI
+Mixpanel
+Algolia
+Payment Processing, Credit Checks and Fraud Prevention. We will disclose your personal data to third party providers for the purposes of providing online and other payment services, handling credit checks and fraud prevention, or product or subscription cancellation, delivery or returns;
+Aggregated or De-identified Data. We may disclose or use aggregated or de-identified information for any purpose. For example, we may share aggregated or de-identified information with prospects or partners for business or research purposes.
+Event of Merger, Sale, or Other Asset Transfer. If we are involved in a merger, acquisition, financing due diligence, reorganization, bankruptcy, receivership, purchase or sale of assets, or transition of service to another provider, then your information may be sold or transferred as part of such a transaction, as permitted by law and/or contract.
+To Comply with Laws. If we receive a request for information, we may disclose your information if we reasonably believe disclosure is in accordance with or required by any applicable law, regulation, or legal process.
+To enforce our rights, prevent fraud, and for safety. To protect and defend the rights, property, or safety of OnLoop, including enforcing contracts or policies, or in connection with investigating and preventing fraud or security issues.
+With Consent. OnLoop may share your data with third parties when we have consent from you to do so.  For example, we share your Captures with OpenAI, using GPT-3, an AI system that produces natural language, which then outputs a cohesive  summary of inputs in the form of a written performance review paragraph that can be more meaningful during 1-on-1 feedback sessions or end of year reviews.  
+
+We use reasonable efforts to ensure that third party service providers provide sufficient assurances that they comply with all applicable law, including the Singapore Personal Data Protection Act 2012 and the EU General Data Protection Regulation.
+
+Sensitive Personal Information
+
+If you provide us with sensitive information in the course of interacting with our Service(s), we will only use sensitive information for the purpose of storing and processing it as part of our Service(s). Sensitive information may include information about you such as racial or ethnic origin, religious beliefs, political affiliation, sexual preferences and criminal records, as well as health and genetic information about you. If you do not consent to the processing and storing of your sensitive information, it is therefore important that it not be submitted to us in the course of your usage.
+
+
+Age Limitations
+
+To the extent prohibited by applicable law, OnLoop does not allow use of the Service by anyone younger than 16 years old. If you learn that anyone younger than 16 has unlawfully provided us with personal information, please contact us and we will take steps to delete such information.
+
+Your Rights
+
+You have certain data protection rights. In certain circumstances, you have the following data protection rights:
+Right of access: if you ask us, we will confirm whether we are processing your personal information and provide you with a copy of that personal information (in a structured, commonly used, and machine-readable format), and you may also request information about the ways in which personal data about you may have been used or disclosed during the past year.  We may charge you a small fee for this service;
+Right to rectification: if the personal information we hold about you is inaccurate or incomplete, you have the right to have it rectified or completed. We will take reasonable steps to ensure inaccurate personal information is rectified 
+Right to erasure: when your personal information is no longer needed for the purposes for which you provided it, we will delete it. You may request that we delete your personal information and we will do so if deletion does not contravene any applicable law
+Right to withdraw consent: if the basis of our processing of your personal information is consent, you can withdraw that consent at any time
+Right to restrict processing: you may request that we restrict or block the processing of your personal information in certain circumstances
+Right to object to processing: you may request that we stop processing your personal information at any time and we will do so to the extent required by the GDPR or the equivalent legislation of the UK
+Rights related to automated decision-making, including profiling: you have the right to not be subject to a decision based solely on automated processing, including profiling, which produces legal effects concerning you or similarly significantly affects you, except where such automated decision-making is necessary for entering into, or the performance of, a contract with you, is authorised by applicable laws or is based on your explicit consent. We do not undertake automated individual decision-making
+
+Please note that we may ask you to verify your identity before responding to such requests.
+
+You have the right to complain to a data protection authority about our collection and use of your personal information. For more information, please contact your local data protection authority.
+You can access your personal details given to us when you register an account with us. You can also change your personal details by logging in to your account.   
+If any of the information that you have provided us with changes, e.g. if you change your email address or other contact details, or if you wish to cancel your registration with us, please contact us at support@onloop.com.
+You have the right to object to us processing your personal data in some cases. In particular, you can ask us to stop sending you direct marketing communications at any time (however please note that we may continue to send you service-related (i.e. non-marketing) communications, such as e-mail updates on your account status). If you wish to exercise any of these rights, please write to us at the address listed below or by clicking on the “unsubscribe” link in any marketing emails.
+If you withdraw your consent to any or all use of your personal data, depending on the nature of your request, we may not be in a position to continue to provide our services to you.
+ 
+Please note that there may be circumstances under applicable law that requires us to refuse your request.  
+Information Regarding Your Data Protection Rights Under General Data Protection Regulation (“GDPR”)
+
+For the purpose of this Privacy Policy, we are a Data Controller of your personal information.
+
+If you are a member of the European Union (“EU”) or a resident of the United Kingdom (“UK”), our legal basis for collecting and using your personal information, as described in this Privacy Policy, depends on the information we collect and the specific context in which we collect it. We may process your personal information because:
+We need to perform a contract with you, such as when you use our Service
+You have given us permission to do so
+The processing is in our legitimate interests and it's not overridden by your rights
+To comply with the law
+
+Contact Us
+
+If you have any questions or comments about this Privacy Policy, or privacy matters generally, or if you wish to exercise any of your rights, please contact our Data Protection Officer, Muhammad Mohsin, using the contact details below.
+
+OnLoop Pte. Ltd: 6 Raffles Quay #11-07, Singapore, 048580, or via email to support@onloop.com.

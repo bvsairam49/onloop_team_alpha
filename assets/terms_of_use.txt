@@ -1,0 +1,167 @@
+Terms of Use
+
+Updated at 2022/05/25
+
+The Service and Websites (as defined below) are published, owned and operated by Onloop Pte Ltd (registered under Unique Entity Number (UEN): 202024902D), a Singapore private limited company with its registered office at 6 Raffles Quay #11-07, Singapore, 048580 (referred to herein as “OnLoop”, "we", "us" or "our").
+
+1	APPLICATION OF TERMS
+
+1.1	These Terms apply to your use of the Service (as that term is defined below) and the Websites.  By clicking “Agree”, you agree to these Terms.  If you do not agree to these Terms, then do not use the Service or the Websites.
+
+1.2	In order to use the Service, you must register an account and provide certain personal information. For information on how we use your personal information, please see our Privacy Policy, which forms an integral part of these Terms.
+
+
+2	CHANGES
+
+2.1 	We may change these Terms at any time by notifying you of the change by email or by posting a notice on the Website.  Unless stated otherwise, any change takes effect from the date set out in the notice.  You are responsible for ensuring you are familiar with the latest Terms.  By continuing to access and use the Service from the date on which the Terms are changed, you agree to be bound by the changed Terms.
+
+2.2	We may change, suspend, discontinue, or restrict access to the Services without notice or liability.
+
+
+3	INTERPRETATION
+
+In these Terms:
+
+Credentials means your registration for an account using your Google or Apple ID credentials to use the Service. 
+
+Data means all data, content, and information (including personal information) owned, held, used or created by you that is stored using, or inputted into, the Service.
+
+Intellectual Property Rights includes copyright, all rights existing anywhere in the world conferred under statute, common law or equity relating to inventions (including patents), registered and unregistered trademarks and designs, circuit layouts, data and databases, confidential information, know-how, and all other rights resulting from intellectual activity.  Intellectual Property has a consistent meaning, and includes any enhancement, modification or derivative work of the Intellectual Property.
+
+Loss includes loss of profits, savings, revenue or data, and any other claim, damage, loss, liability and cost, including legal costs on a solicitor and own client basis.
+
+Objectionable includes being objectionable, defamatory, obscene, harassing, violent, threatening, harmful pornographic, vulgar or offensive, promoting discrimination, bigotry, racism, hatred, violence, harassment, illegal or harmful activities or substances, harm or action against any individual or group, or being unlawful in any way.
+
+OnLoop Platform means the OnLoop software-as-a-service platform and the Website owned and operated by us that is used to provide the Service.
+
+a person includes an individual, a body corporate, an association of persons (whether corporate or not), a trust, a government department, or any other entity.
+
+personal information means information about an identifiable, living person, and includes personal data, personally identifiable information and equivalent information under applicable privacy and data protection laws.
+
+Service means the OnLoop Platform, including the associated OnLoop mobile and desktop applications.
+
+Terms means these terms titled Terms of Use.
+
+Underlying Systems means the OnLoop Platform, IT solutions, systems and networks (including software and hardware) used to provide the Service, including any third party solutions, systems and networks.
+
+Websites means the internet site at https://onloop.com and other OnLoop websites.
+
+You and your means you as the user of the Service.
+
+
+4	YOUR OBLIGATIONS
+
+4.1        You must provide true, current and complete information in your dealings with us (including when setting up an account), and must promptly update that information as required so that the information remains true, current and complete.
+
+4.2	You must use the Service in accordance with these Terms solely for your own personal purposes and not resell or make available the Service to any third party, or otherwise commercially exploit the Service.
+
+4.3	When accessing the Service, you must:
+not impersonate another person or misrepresent authorisation to act on behalf of others or us;
+not share your Credentials and login information with any individual;
+correctly identify the sender of all electronic transmissions;
+not attempt to undermine the security or integrity of the Underlying Systems; 
+not use, or misuse, the Service in any way which may impair the functionality of the Underlying Systems or impair the ability of any other user to use the Service;
+not attempt to view, access or copy any material or data other than:
+that which you are authorised to access; and
+to the extent necessary for you to use the Service in accordance with these Terms;
+neither use the Service in a manner, nor transmit, input or store any Data, that breaches any third party right (including Intellectual Property Rights and privacy rights) or is Objectionable, incorrect or misleading;
+not license, sublicense, sell, resell, rent, lease, transfer, assign, distribute, time share or otherwise commercially exploit or make the Service available to any third party;
+not use the Service to send, store, publish, post, upload or otherwise transmit any viruses, Trojan horses, worms, time bombs, corrupted files or other computer programming routines that are intended to damage, detrimentally interfere with, surreptitiously intercept or expropriate any systems, data, personal information or property of another;
+not attempt to gain unauthorized access to the Service or its related systems or networks;
+not use or knowingly permit the use of any security testing tools in order to probe, scan or attempt to penetrate or ascertain the security of the Service;
+not use any data mining, robots or similar data gathering or extraction methods; and
+not copy, translate, create a derivative work of, reverse engineer, reverse assemble; and disassemble, or decompile the Service or any part thereof or otherwise attempt to discover any source code or modify the Service.
+
+4.4	We reserve the right to terminate, limit, or suspend your access to the Service for any breach of these restrictions or any other violation of these Terms.
+
+4.5	You indemnify us against all Loss we suffer or incur as a direct or indirect result of your failure to comply with these Terms, including any failure of a person who accesses and uses our Service by using your Credentials.
+
+
+5	DATA 
+
+5.1	Subject to your rights in the Data, we exclusively own all rights, title and interest in and to the Service, including all associated Intellectual Property Rights.  You acknowledge that the Service is protected by copyright and trademark.  You agree not to use, remove, alter or obscure any copyright, trademark, service mark or other proprietary rights notices incorporated in or accompanying the Service.
+
+5.2	We do not claim ownership of any Data created, transmitted, uploaded, stored or otherwise made available on the OnLoop Platform by you through your use of the Service.  Nothing in these Terms will be deemed to restrict any rights that you may have to use your Data.  You grant us a limited license to use, collect, store your Data for the purpose of providing the Service.
+
+5.3	You acknowledge and agree that:
+we may use Data to generate anonymised and aggregated statistical and analytical data (Analytical Data); and use Analytical Data for our internal research and product development purposes and to conduct statistical analysis and identify trends and insights.
+our rights under clause 5.3A will survive termination or expiry of these Terms; and 
+title to, and all Intellectual Property Rights in, Analytical Data is and remains our property.
+
+5.4	You are solely responsible for your Data.  You represent and warrant that you own your Data and you have all rights that are necessary to grant us the licence rights in your Data under these Terms.  You also represent and warrant that neither your Data, nor your use and provision of your Data to be made available through the Service, nor any use of your Data on or through the Service will infringe, misappropriate or violate a third party’s intellectual property rights, or rights of publicity or privacy, or result in the violation of any applicable law or regulation.
+
+5.5	You must agree to our Privacy Policy to enable us to collect, use, hold and process that information in accordance with these Terms.
+
+5.6	You may share your Data and agree that Data you share will be accessible by and be available to other users of the Service to whom you grant access to such shared Data.  Consequently, you understand and agree that such users will have the right to view your shared Data.  You grant us all rights necessary to make any of your shared Data available to other users of the Service.
+
+5.7	You indemnify us against any liability, claim, proceeding, cost, expense (including the actual legal fees charged by our solicitors) and Loss of any kind arising from any actual or alleged claim by a third party that any Data infringes the rights of that third party (including Intellectual Property Rights and privacy rights) or that the Data is Objectionable, incorrect or misleading.
+
+
+6	INTELLECTUAL PROPERTY
+ 
+6.1	We own all proprietary and intellectual property rights in the Websites and Service (including all information, data, text, graphics, artwork, photographs, logos, icons, sound recordings, videos and look and feel), and the Underlying Systems.
+
+6.2	If you provide us with ideas, comments or suggestions relating to the Websites, Service or Underlying Systems (together feedback) all Intellectual Property Rights in that feedback, and anything created as a result of that feedback (including new material, enhancements, modifications or derivative works), are owned solely by us; and we may use or disclose the feedback for any purpose.
+
+
+7         DISCLAIMERS
+
+7.1	To the extent permitted by law, we have no liability or responsibility to you or any other person for any Loss in connection with:
+the Service being unavailable (in whole or in part) or performing slowly;
+any error in, or omission from, any information made available through the Service; and
+any exposure to viruses or other forms of interference which may damage your computer system or expose you to fraud when you access or use the Service.  To avoid doubt, you are responsible for ensuring the process by which you access and use the Service protects you from this.
+
+7.2	We make no representation or warranty that the Service is appropriate or available for use in all countries or that the content satisfies the laws of all countries.  You are responsible for ensuring that your access to and use of the Service is not illegal or prohibited, and for your own compliance with applicable local laws. 
+
+7.3	Our Service may contain links to third party web sites or services that are not owned or controlled by us.  Our Service may also allow you to import or interface with third party applications or services.  We have no control over, and assume no responsibility for the content, privacy policies, or practices of any third-party web sites or services.  We do not warrant the offerings of any of these entities/individuals or their websites.
+
+7.4 	You acknowledge and agree that we shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such third party web sites or services.  We strongly advise you to read the terms and conditions and privacy policies of any third-party web sites or services that you visit or interact with.
+
+
+8	LIABILITY
+
+8.1	To the maximum extent permitted by law:
+you acknowledge we provide the Service on an as is basis; and
+you access and use the Service at your own risk.
+
+8.2	In no event shall we, nor our directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from:
+ your access to or use of or inability to access or use the Service or the Website;
+any conduct or content of any third party on the Service;
+any content obtained from the Service; and
+unauthorized access, use or alteration of your transmissions or content.
+
+8.3	The exclusions in clause 8.2 apply regardless of whether our liability or responsibility arises in contract, tort (including negligence) or any other legal theory, whether or not we have been informed of the possibility of such damage, and even if a remedy set forth herein is found to have failed of its essential purpose.  
+
+8.4	Except to the extent permitted by law, nothing in these Terms has the effect of contracting out of any applicable consumer protection law that cannot be excluded.  To the extent our liability cannot be excluded but can be limited, our liability is limited to SGD10.
+
+8.5	To the maximum extent permitted by law and only to the extent clauses 8.1 to 8.3 of these Terms do not apply, our total liability to you under or in connection with these Terms, or in connection with the Service or Website, or your access and use of (or inability to access or use) the Service or Website, must not exceed SGD10.
+
+
+9	SUSPENSION AND TERMINATION
+
+9.1	Without prejudice to any other right or remedy available to us, if we consider that you have breached these Terms or we otherwise consider it appropriate, we may immediately, and without notice, suspend or terminate your access to the Service (or any part of it).
+
+9.2        On suspension or termination, you must immediately cease using the Service and must not attempt to gain further access.
+
+
+10	GENERAL 
+
+10.1	No person other than you and us has any right to a benefit under, or to enforce, these Terms.
+
+10.2	For us to waive a right under these Terms, that waiver must be in writing.
+
+10.3	If we need to contact you, we may do so by email.  You agree that this satisfies all legal requirements in relation to written communications.  You may give notice to us under or in connection with these Terms by emailing support@onloop.com.
+
+10.4	These Terms, and any dispute relating to these Terms or the Service, are governed by and must be interpreted in accordance with the laws of Singapore.  The United Nations Convention on Contracts for the International Sale of Goods is expressly and entirely excluded.  Each party submits to the non-exclusive jurisdiction of the Courts of Singapore in relation to any dispute connected with these Terms or the Service.
+
+10.5	Clauses which, by their nature, are intended to survive termination of these Terms, including clauses 4.5, 6, 7, 8, and 10, continue in force.   
+
+10.6	If any part or provision of these Terms is or becomes illegal, unenforceable, or invalid, that part or provision is deemed to be modified to the extent required to remedy the illegality, unenforceability or invalidity.  If modification is not possible, the part or provision must be treated for all purposes as severed from these Terms.  The remainder of these Terms will be binding on you.
+
+10.7	These Terms set out everything agreed by the parties relating to the Service, and supersede and cancel anything discussed, exchanged or agreed prior to you agreeing to these Terms.  The parties have not relied on any representation, warranty or agreement relating to the Service that is not expressly set out in the Terms, and no such representation, warranty or agreement has any effect from the date you agreed to these Terms.
+
+
+CONTACT US
+
+You may contact us regarding the Service or these Terms at: 
+OnLoop Pte. Ltd: 6 Raffles Quay #11-07, Singapore, 048580 or via email to support@onloop.com.

@@ -870,7 +870,7 @@ class SharedButtons {
     return RawMaterialButton(
       fillColor: enabled ? const Color(0xFF3292D7) : const Color(0xFFECEDF2),
       elevation: 2,
-      child: Text('Save',
+      child: Text('Login',
           style: AppTextTheme.openSans(
               fontSize: 15.0,
               fontWeight: FontWeight.w600,

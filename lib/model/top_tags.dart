@@ -31,6 +31,8 @@ enum CaptureTagColor {
   deep_purple
 }
 
+enum CaptureTagSentiment { weekly, monthly, threeMonths, sixMonths, yearly }
+
 class CaptureTag {
   String id;
   String name;
@@ -295,3 +297,13 @@ const captureTagColorGradients = {
     const Color(0xFF4E36AB)
   ]
 };
+
+extension CaptureTagSentimentUtil on CaptureTagSentiment {
+  static const names = {
+    CaptureTagSentiment.weekly: 'W',
+    CaptureTagSentiment.monthly: 'M',
+    CaptureTagSentiment.threeMonths: '3M',
+    CaptureTagSentiment.sixMonths: '6M',
+    CaptureTagSentiment.yearly: 'Y',
+  };
+}

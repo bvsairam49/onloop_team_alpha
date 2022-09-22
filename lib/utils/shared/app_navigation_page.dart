@@ -218,6 +218,7 @@ class AppNavigationPageState extends State<AppNavigationPage>
                 return CapturePage();
               })),
             );
+
             // GetIt.instance<AnalyticsService>().logButtonPress('add_feedback');
             // HapticFeedback.mediumImpact();
             // final captureCount = _user.captureCount ?? 0;

@@ -58,6 +58,30 @@ class CapturePage extends StatefulWidget {
 }
 
 class _CapturePageState extends State<CapturePage> {
+  // final idController = TextEditingController();
+  // final passwordController = TextEditingController();
+
+  // void _printLatestValue() {
+  //   print('Second text field: ${idController.text}');
+  // }
+
+  // @override
+  // void initState() {
+  //   super.initState();
+
+  //   // Start listening to changes.
+  //   idController.addListener(_printLatestValue);
+  // }
+
+  // @override
+  // void dispose() {
+  //   // Clean up the controller when the widget is removed from the
+  //   // widget tree.
+  //   idController.dispose();
+  //   passwordController.dispose();
+  //   super.dispose();
+  // }
+
   final List<TopTag> topTags = [
     TopTag(
         captureTag: CaptureTag(
@@ -324,7 +348,7 @@ class _CapturePageState extends State<CapturePage> {
                         height: 20.0,
                       ),
                     ),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.all(20.0),
                       child: TextField(
                         maxLines: 5,

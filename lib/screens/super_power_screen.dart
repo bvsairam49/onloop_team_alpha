@@ -375,17 +375,17 @@ class _SuperPowerScreenState extends State<SuperPowerScreen> {
     if (globals.isImproves) {
       if (_captureTagSentiment == CaptureTagSentiment.weekly) {
         tagtoShow = [
-          "self starter",
-          "dot connector",
+          "Self Starter",
+          "Dot Connector",
         ];
       } else if (_captureTagSentiment == CaptureTagSentiment.monthly) {
-        tagtoShow = ["dot connector", "ultra learner"];
+        tagtoShow = ["Dot Connector", "Ultra Learner"];
       } else if (_captureTagSentiment == CaptureTagSentiment.threeMonths) {
-        tagtoShow = ["dot connector", "self assured"];
+        tagtoShow = ["Dot Connector", "Self Assured"];
       } else if (_captureTagSentiment == CaptureTagSentiment.sixMonths) {
-        tagtoShow = ["self assured"];
+        tagtoShow = ["Self Assured"];
       } else {
-        tagtoShow = ["self assured", "fierce optimisim"];
+        tagtoShow = ["Self Assured", "Fierce Optimisim"];
       }
     } else {
       if (_captureTagSentiment == CaptureTagSentiment.weekly) {
@@ -418,36 +418,72 @@ class _SuperPowerScreenState extends State<SuperPowerScreen> {
         ];
       }
     }
-    final topTagCells = tagtoShow.map((topTag) {
-      return SharedButtons.captureTagButtonV4(
-        tag: topTag,
-        disableInkSplash: true,
-        onPressed: () async {
-          // Tags on colleague card.
-          // KeyboardHiderHelper.hideKeyboard(context);
-          // await _navigateToColleagueDetails(colleague);
-        },
+    if (topTags.length == 1 || topTags.length == 2) {
+      final topTagCells = topTags.map((topTag) {
+        var captureTag = topTag.captureTag;
+        
+        return SharedButtons.captureTagButtonV4(
+          tag: captureTag.name,
+          disableInkSplash: true,
+          onPressed: () async {
+            // Tags on colleague card.
+            // KeyboardHiderHelper.hideKeyboard(context);
+            // await _navigateToColleagueDetails(colleague);
+          },
+        );
+      }).toList();
+
+      int noOfEmptyCellsRequired = 3 - topTagCells.length;
+
+      for (int counter = 0; counter < noOfEmptyCellsRequired; counter++) {
+        final emptyCell =
+            SharedButtons.emptyCaptureTagButton(height: 1, width: 1);
+        topTagCells.add(emptyCell);
+      }
+
+      return Row(
+        children: [
+          Expanded(
+            child: Wrap(
+              spacing: 8.0,
+              runSpacing: 8.0,
+              children: topTagCells,
+            ),
+          )
+        ],
       );
-    }).toList();
+    } else {
+      final topTagCells = tagtoShow.map((topTag) {
+        return SharedButtons.captureTagButtonV4(
+          tag: topTag,
+          disableInkSplash: true,
+          onPressed: () async {
+            // Tags on colleague card.
+            // KeyboardHiderHelper.hideKeyboard(context);
+            // await _navigateToColleagueDetails(colleague);
+          },
+        );
+      }).toList();
 
-    int noOfEmptyCellsRequired = 3 - topTagCells.length;
+      int noOfEmptyCellsRequired = 3 - topTagCells.length;
 
-    for (int counter = 0; counter < noOfEmptyCellsRequired; counter++) {
-      final emptyCell =
-          SharedButtons.emptyCaptureTagButton(height: 1, width: 1);
-      topTagCells.add(emptyCell);
+      for (int counter = 0; counter < noOfEmptyCellsRequired; counter++) {
+        final emptyCell =
+            SharedButtons.emptyCaptureTagButton(height: 1, width: 1);
+        topTagCells.add(emptyCell);
+      }
+
+      return Row(
+        children: [
+          Expanded(
+            child: Wrap(
+              spacing: 8.0,
+              runSpacing: 8.0,
+              children: topTagCells,
+            ),
+          )
+        ],
+      );
     }
-
-    return Row(
-      children: [
-        Expanded(
-          child: Wrap(
-            spacing: 8.0,
-            runSpacing: 8.0,
-            children: topTagCells,
-          ),
-        )
-      ],
-    );
   }
 }

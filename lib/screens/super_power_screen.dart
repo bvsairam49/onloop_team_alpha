@@ -164,7 +164,7 @@ class _SuperPowerScreenState extends State<SuperPowerScreen> {
                   height: 48,
                   child: Image.asset('assets/Trophy.png')),
               Text(
-                'New superpower unlocked!',
+                'Your blindspot is now a superpower!',
                 style: AppTextTheme.poppins(
                   fontSize: 15,
                   fontWeight: FontWeight.w600,
@@ -172,7 +172,7 @@ class _SuperPowerScreenState extends State<SuperPowerScreen> {
                 ),
               ),
               Text(
-                'Your Captures added new tags. Keep Capturing to discover more superpowers.',
+                'Congratulations on turning your blindspot into a superpower. These tags will now be removed from your blindspots tag list.',
                 style: AppTextTheme.poppins(
                   fontSize: 11,
                   fontWeight: FontWeight.w600,
@@ -230,8 +230,7 @@ class _SuperPowerScreenState extends State<SuperPowerScreen> {
                 ),
               ],
             ),
-            _topTagsFutureBuilder(
-                [widget.topTagList.first, widget.topTagList.last]),
+            _topTagsFutureBuilder([widget.topTagList.first]),
           ],
         ),
       ),
@@ -293,7 +292,10 @@ class _SuperPowerScreenState extends State<SuperPowerScreen> {
     List tagtoShow = [];
     if (globals.isImproves) {
       if (_captureTagSentiment == CaptureTagSentiment.weekly) {
-        tagtoShow = ["self starter", "dot connector"];
+        tagtoShow = [
+          "self starter",
+          "dot connector",
+        ];
       } else if (_captureTagSentiment == CaptureTagSentiment.monthly) {
         tagtoShow = ["dot connector", "ultra learner"];
       } else if (_captureTagSentiment == CaptureTagSentiment.threeMonths) {
@@ -305,15 +307,33 @@ class _SuperPowerScreenState extends State<SuperPowerScreen> {
       }
     } else {
       if (_captureTagSentiment == CaptureTagSentiment.weekly) {
-        tagtoShow = ["dot connector", "fierce optimisim"];
+        tagtoShow = [
+          'Self Starter',
+          'Dot Connector',
+          "Ultra Learner",
+          "Self Assured"
+        ];
       } else if (_captureTagSentiment == CaptureTagSentiment.monthly) {
-        tagtoShow = ["dot connector"];
+        tagtoShow = ["Attention To Detail", "Thinking On The Fly"];
       } else if (_captureTagSentiment == CaptureTagSentiment.threeMonths) {
-        tagtoShow = ["dot connector", "ultra learner"];
+        tagtoShow = [
+          "Attention To Detail",
+          "Thinking On The Fly",
+          "Fierce Optimism"
+        ];
       } else if (_captureTagSentiment == CaptureTagSentiment.sixMonths) {
-        tagtoShow = ["dot connector", "ultra learner"];
+        tagtoShow = [
+          "Attention To Detail",
+          "Thinking On The Fly",
+          "Fierce Optimism",
+          "Resilience To Adversity"
+        ];
       } else {
-        tagtoShow = ["dot connector", "self assured"];
+        tagtoShow = [
+          "Attention To Detail",
+          "Thinking On The Fly",
+          "Resilience To Adversity"
+        ];
       }
     }
     final topTagCells = tagtoShow.map((topTag) {

@@ -1,4 +1,10 @@
 import 'dart:collection';
+import 'dart:convert';
+import 'dart:core';
+
+import 'package:flutter/foundation.dart';
+
+import '../model/top_tags.dart';
 
 bool isLoggedIn = false;
 bool isNewCapture = false;
@@ -8,12 +14,71 @@ String profileAvator;
 List<dynamic> userObject;
 List<dynamic> colleagueList;
 int totalColleagueSize;
+int currentUserid;
 
 Map<int, dynamic> allCaptures;
 Map<int, dynamic> allTags;
+Map<int, List<TopTag>> topTags = {};
+
+List<TopTag> allAvailableTags = [];
+List<TopTag> topTagsNow = [];
 
 List<dynamic> userPositiveTags;
 List<dynamic> userImproveTags;
+
+List<String> getAllColleagues() {
+  List<String> response = [];
+  colleagueList.forEach((element) {
+    response.add(element['name'].toString());
+  });
+  return response;
+}
+
+void setTopTags(int id, String captures) {
+  List data = jsonDecode(captures);
+  data.forEach((element) {
+    TopTag t = TopTag(
+        captureTag: CaptureTag(
+            id: '1',
+            name: element['text'],
+            isCustom: false,
+            color: CaptureTagColor.blue,
+            tagDescription: element['text'],
+            categoryDescription: 'd',
+            disciplineName: 'a',
+            type: '1'),
+        count: 1);
+
+    topTagsNow.add(t);
+  });
+  topTags[id] = topTagsNow;
+}
+
+List<String> getAllTags() {
+  List<String> response = [];
+  allTags.forEach((key, value) {
+    response.add(value);
+  });
+  return response;
+}
+
+void setAllAvailableTags(String input) {
+  List data = jsonDecode(input);
+  data.forEach((element) {
+    TopTag t = TopTag(
+        captureTag: CaptureTag(
+            id: '1',
+            name: element,
+            isCustom: false,
+            color: CaptureTagColor.blue,
+            tagDescription: element,
+            categoryDescription: 'd',
+            disciplineName: 'a',
+            type: '1'),
+        count: 1);
+    allAvailableTags.add(t);
+  });
+}
 
 List<dynamic> sairamColleagueCaptureList = [
   {

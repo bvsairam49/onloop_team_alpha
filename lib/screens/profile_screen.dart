@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:flutter/material.dart';
 import 'package:team_alpha/model/top_tags.dart';
 import 'package:team_alpha/screens/globals.dart';
@@ -28,96 +30,7 @@ class _ProfileScreenState extends State<ProfileScreen>
       const Duration(milliseconds: 500);
   Map<String, int> _userMetrics;
 
-  final List<TopTag> _topTags = [
-    TopTag(
-        captureTag: CaptureTag(
-            id: '1',
-            name: 'improve',
-            isCustom: false,
-            color: CaptureTagColor.blue,
-            tagDescription: 'hello',
-            categoryDescription: 'd',
-            disciplineName: 'a',
-            type: '1'),
-        count: 1),
-    TopTag(
-        captureTag: CaptureTag(
-            id: '2',
-            name: 'hellp',
-            isCustom: false,
-            color: CaptureTagColor.orange,
-            tagDescription: 'hello',
-            categoryDescription: 'd',
-            disciplineName: 'a',
-            type: '1'),
-        count: 1),
-    TopTag(
-        captureTag: CaptureTag(
-            id: '3',
-            name: 'mizan',
-            isCustom: false,
-            color: CaptureTagColor.green,
-            tagDescription: 'delight',
-            categoryDescription: 'd',
-            disciplineName: 'a',
-            type: '1'),
-        count: 1),
-    TopTag(
-        captureTag: CaptureTag(
-            id: '4',
-            name: 'mizan',
-            isCustom: false,
-            color: CaptureTagColor.green,
-            tagDescription: 'delight',
-            categoryDescription: 'd',
-            disciplineName: 'a',
-            type: '1'),
-        count: 1),
-    TopTag(
-        captureTag: CaptureTag(
-            id: '5',
-            name: 'Vineet',
-            isCustom: false,
-            color: CaptureTagColor.yellow,
-            tagDescription: 'delight',
-            categoryDescription: 'd',
-            disciplineName: 'a',
-            type: '1'),
-        count: 1),
-    TopTag(
-        captureTag: CaptureTag(
-            id: '6',
-            name: 'Hilda',
-            isCustom: false,
-            color: CaptureTagColor.blue,
-            tagDescription: 'delight',
-            categoryDescription: 'd',
-            disciplineName: 'a',
-            type: '1'),
-        count: 1),
-    TopTag(
-        captureTag: CaptureTag(
-            id: '7',
-            name: 'Hilda',
-            isCustom: false,
-            color: CaptureTagColor.blue,
-            tagDescription: 'delight',
-            categoryDescription: 'd',
-            disciplineName: 'a',
-            type: '1'),
-        count: 1),
-    TopTag(
-        captureTag: CaptureTag(
-            id: '8',
-            name: 'Hilda',
-            isCustom: false,
-            color: CaptureTagColor.blue,
-            tagDescription: 'delight',
-            categoryDescription: 'd',
-            disciplineName: 'a',
-            type: '1'),
-        count: 1)
-  ];
+  final List<TopTag> _topTags = globals.topTags[globals.currentUserid];
 
   @override
   void initState() {

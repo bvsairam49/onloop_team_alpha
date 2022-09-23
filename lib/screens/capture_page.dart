@@ -8,47 +8,7 @@ import '../utils/shared/app_navigation_page.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 
 import '../utils/shared/shared_button.dart';
-
-Widget _topTagsFutureBuilder(List<TopTag> topTags) {
-  return Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: _colleagueTopTags(topTags),
-  );
-}
-
-Widget _colleagueTopTags(List<TopTag> topTags) {
-  final topTagCells = topTags.map((topTag) {
-    final captureTag = topTag.captureTag;
-    return SharedButtons.captureTagButtonV3(
-      tag: captureTag,
-      disableInkSplash: true,
-      onPressed: () async {
-        // Tags on colleague card.
-        // KeyboardHiderHelper.hideKeyboard(context);
-        // await _navigateToColleagueDetails(colleague);
-      },
-    );
-  }).toList();
-
-  int noOfEmptyCellsRequired = 3 - topTagCells.length;
-
-  for (int counter = 0; counter < noOfEmptyCellsRequired; counter++) {
-    final emptyCell = SharedButtons.emptyCaptureTagButton();
-    topTagCells.add(emptyCell);
-  }
-
-  return Row(
-    children: [
-      Expanded(
-        child: Wrap(
-          spacing: 8.0,
-          runSpacing: 8.0,
-          children: topTagCells,
-        ),
-      )
-    ],
-  );
-}
+import 'globals.dart' as globals;
 
 class CapturePage extends StatefulWidget {
   CapturePage({Key key, this.topTags}) : super(key: key);
@@ -58,6 +18,52 @@ class CapturePage extends StatefulWidget {
 }
 
 class _CapturePageState extends State<CapturePage> {
+  bool isButtonSelected = false;
+  Widget _topTagsFutureBuilder(List<TopTag> topTags) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: _colleagueTopTags(topTags),
+    );
+  }
+
+  Widget _colleagueTopTags(List<TopTag> topTags) {
+    List<dynamic> buttonList;
+
+    var topTagCells = topTags.map((topTag) {
+      var captureTag = topTag.captureTag;
+
+      return SharedButtons.captureTagButtonV3(
+        tag: captureTag,
+        disableInkSplash: true,
+        isSelected: isButtonSelected,
+        onPressed: () {
+          setState(() {
+            isButtonSelected = !isButtonSelected;
+          });
+        },
+      );
+    }).toList();
+
+    int noOfEmptyCellsRequired = 3 - topTagCells.length;
+
+    for (int counter = 0; counter < noOfEmptyCellsRequired; counter++) {
+      final emptyCell = SharedButtons.emptyCaptureTagButton();
+      topTagCells.add(emptyCell);
+    }
+
+    return Row(
+      children: [
+        Expanded(
+          child: Wrap(
+            spacing: 8.0,
+            runSpacing: 8.0,
+            children: topTagCells,
+          ),
+        )
+      ],
+    );
+  }
+
   // final idController = TextEditingController();
   // final passwordController = TextEditingController();
 
@@ -82,96 +88,7 @@ class _CapturePageState extends State<CapturePage> {
   //   super.dispose();
   // }
 
-  final List<TopTag> topTags = [
-    TopTag(
-        captureTag: CaptureTag(
-            id: '1',
-            name: 'improve',
-            isCustom: false,
-            color: CaptureTagColor.blue,
-            tagDescription: 'hello',
-            categoryDescription: 'd',
-            disciplineName: 'a',
-            type: '1'),
-        count: 1),
-    TopTag(
-        captureTag: CaptureTag(
-            id: '2',
-            name: 'hellp',
-            isCustom: false,
-            color: CaptureTagColor.orange,
-            tagDescription: 'hello',
-            categoryDescription: 'd',
-            disciplineName: 'a',
-            type: '1'),
-        count: 1),
-    TopTag(
-        captureTag: CaptureTag(
-            id: '3',
-            name: 'mizan',
-            isCustom: false,
-            color: CaptureTagColor.green,
-            tagDescription: 'delight',
-            categoryDescription: 'd',
-            disciplineName: 'a',
-            type: '1'),
-        count: 1),
-    TopTag(
-        captureTag: CaptureTag(
-            id: '4',
-            name: 'mizan',
-            isCustom: false,
-            color: CaptureTagColor.green,
-            tagDescription: 'delight',
-            categoryDescription: 'd',
-            disciplineName: 'a',
-            type: '1'),
-        count: 1),
-    TopTag(
-        captureTag: CaptureTag(
-            id: '5',
-            name: 'Vineet',
-            isCustom: false,
-            color: CaptureTagColor.yellow,
-            tagDescription: 'delight',
-            categoryDescription: 'd',
-            disciplineName: 'a',
-            type: '1'),
-        count: 1),
-    TopTag(
-        captureTag: CaptureTag(
-            id: '6',
-            name: 'Hilda',
-            isCustom: false,
-            color: CaptureTagColor.blue,
-            tagDescription: 'delight',
-            categoryDescription: 'd',
-            disciplineName: 'a',
-            type: '1'),
-        count: 1),
-    TopTag(
-        captureTag: CaptureTag(
-            id: '7',
-            name: 'Hilda',
-            isCustom: false,
-            color: CaptureTagColor.blue,
-            tagDescription: 'delight',
-            categoryDescription: 'd',
-            disciplineName: 'a',
-            type: '1'),
-        count: 1),
-    TopTag(
-        captureTag: CaptureTag(
-            id: '8',
-            name: 'Hilda',
-            isCustom: false,
-            color: CaptureTagColor.blue,
-            tagDescription: 'delight',
-            categoryDescription: 'd',
-            disciplineName: 'a',
-            type: '1'),
-        count: 1)
-  ];
+  final List<TopTag> topTags = globals.allAvailableTags;
 //---------------------Emotion button---------------//
 
   int _selectedEmotion = 0; //0 if none selected, 1 if celebrate, 2 if improve
@@ -244,6 +161,7 @@ class _CapturePageState extends State<CapturePage> {
 
   @override
   Widget build(BuildContext context) {
+    globals.getAllTags();
     return Scaffold(
       body: Column(
         children: [
@@ -328,12 +246,7 @@ class _CapturePageState extends State<CapturePage> {
                     Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: DropdownSearch<String>(
-                        items: [
-                          "Brazil",
-                          "Italia (Disabled)",
-                          "Tunisia",
-                          'Canada'
-                        ],
+                        items: globals.getAllColleagues(),
                         dropdownSearchDecoration: const InputDecoration(
                           hintText: "Search or Select a colleague",
                         ),

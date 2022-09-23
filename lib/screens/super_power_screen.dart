@@ -295,6 +295,7 @@ class _SuperPowerScreenState extends State<SuperPowerScreen> {
         tag: captureTag,
         disableInkSplash: true,
         onPressed: () async {
+          debugPrint('i was trapped');
           // Tags on colleague card.
           // KeyboardHiderHelper.hideKeyboard(context);
           // await _navigateToColleagueDetails(colleague);

@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+
 class TopTag {
   final CaptureTag captureTag;
   final int count;
@@ -69,7 +71,7 @@ class CaptureTag {
       name: map['name'],
       isCustom: map['is_custom'] ?? false,
       type: map['type'],
-      color: CaptureTagColorUtil.typeFromString(map['color']),
+      color: CaptureTagColor.purple,
       tagDescription: map['tag_description'],
       categoryDescription: map['category_description'],
       disciplineName: map['discipline_name'] ?? '',

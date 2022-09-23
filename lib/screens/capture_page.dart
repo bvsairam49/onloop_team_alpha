@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 
 import '../model/app_state.dart';
 import '../model/top_tags.dart';
+import '../utils/misc/app_text_theme.dart';
 import '../utils/shared/app_navigation_page.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 
@@ -27,23 +28,29 @@ class _CapturePageState extends State<CapturePage> {
   }
 
   Widget _colleagueTopTags(List<TopTag> topTags) {
-    List<dynamic> buttonList;
+    List activeTags = [];
+    List topTags = [
+      'Self starter',
+      'Dot connector',
+      'Ultra learner',
+      'Self assured',
+      'Attention to Detail',
+      'Thinking on the Fly',
+      'Fierce Optimism',
+      'Resilience to Adversity'
+    ];
 
-    var topTagCells = topTags.map((topTag) {
-      var captureTag = topTag.captureTag;
-
-      return SharedButtons.captureTagButtonV3(
-        tag: captureTag,
+    final topTagCells = topTags.map((topTag) {
+      return SharedButtons.captureTagButtonV4(
+        tag: topTag,
         disableInkSplash: true,
-        isSelected: isButtonSelected,
-        onPressed: () {
-          setState(() {
-            isButtonSelected = !isButtonSelected;
-          });
+        onPressed: () async {
+          // Tags on colleague card.
+          // KeyboardHiderHelper.hideKeyboard(context);
+          // await _navigateToColleagueDetails(colleague);
         },
       );
     }).toList();
-
     int noOfEmptyCellsRequired = 3 - topTagCells.length;
 
     for (int counter = 0; counter < noOfEmptyCellsRequired; counter++) {
@@ -161,7 +168,6 @@ class _CapturePageState extends State<CapturePage> {
 
   @override
   Widget build(BuildContext context) {
-    globals.getAllTags();
     return Scaffold(
       body: Column(
         children: [
@@ -234,71 +240,128 @@ class _CapturePageState extends State<CapturePage> {
                       ),
                     ],
                   ),
-                  Column(children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0.0, 5.0, 00.0, 5),
-                      child: Image.asset(
-                        'assets/profile/questionone.png',
-                        width: 300.0,
-                        height: 20.0,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: DropdownSearch<String>(
-                        items: globals.getAllColleagues(),
-                        dropdownSearchDecoration: const InputDecoration(
-                          hintText: "Search or Select a colleague",
+                  Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding:
+                              const EdgeInsets.fromLTRB(12.0, 5.0, 00.0, 5),
+                          child: Image.asset(
+                            'assets/profile/questionone.png',
+                            width: 300.0,
+                            height: 20.0,
+                          ),
                         ),
-                        onChanged: print,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(40.0, 5.0, 00.0, 5),
-                      child: Image.asset(
-                        'assets/profile/questiontwo.png',
-                        width: 300.0,
-                        height: 20.0,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(20.0),
-                      child: TextField(
-                        maxLines: 5,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: ("What was the situation?" +
-                              "\n" +
-                              '------------------------' +
-                              "\n" +
-                              "What behavior did you notice?" +
-                              "\n"
-                                  "------------------------" +
-                              "\n"
-                                  "How did it impact you? "),
+                        Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: DropdownSearch<String>(
+                            items: globals.getAllColleagues(),
+                            dropdownSearchDecoration: InputDecoration(
+                              prefixIcon: Padding(
+                                padding: const EdgeInsets.all(9.0),
+                                child: Image.asset('assets/app_bar/search.png',
+                                    fit: BoxFit.fitHeight, height: 18),
+                              ),
+                              prefixIconConstraints: const BoxConstraints(
+                                  maxWidth: 100, maxHeight: 100),
+                              hintText: 'Search or select a colleague',
+                              hintStyle: AppTextTheme.poppins(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                  color: const Color(0xFFAFCDDB)),
+                              filled: true,
+                              fillColor: const Color(0xFFFFFFFF),
+                              contentPadding: const EdgeInsets.all(10),
+                            ),
+                            onChanged: print,
+                          ),
                         ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(120.0, 5.0, 00.0, 5),
-                      child: Image.asset(
-                        'assets/profile/questionthree.png',
-                        width: 300.0,
-                        height: 20.0,
-                      ),
-                    ),
-                    Padding(
-                        padding: const EdgeInsets.fromLTRB(12, 5.0, 00.0, 12),
-                        child: _topTagsFutureBuilder(topTags)),
-                  ]), //implement tags here
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(40.0, 5.0, 00.0, 5),
-                    child: Image.asset(
-                      'assets/profile/questionfour.png',
-                      width: 300.0,
-                      height: 16.0,
-                    ),
-                  ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(0.0, 5.0, 00.0, 5),
+                          child: Image.asset(
+                            'assets/profile/questiontwo.png',
+                            width: 300.0,
+                            height: 20.0,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(20.0),
+                          child: TextFormField(
+                            maxLines: 5,
+                            style: AppTextTheme.poppins(
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.w500,
+                              color: const Color(0xFF4F697C),
+                            ),
+                            decoration: InputDecoration(
+                              contentPadding: const EdgeInsets.all(10),
+                              fillColor: Colors.white,
+                              filled: true,
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  width: 1.0,
+                                  color: Color(0xFFECEEF2),
+                                ),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  width: 1,
+                                  color: Color(0xFFECEEF2),
+                                ),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              border: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  width: 1.0,
+                                  color: Color(0xFFECEEF2),
+                                ),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              hintText:
+                                  'What was the situation?\n\nWhat behavior did you notice?\n\nHow did it impact you?',
+                              hintStyle: AppTextTheme.poppins(
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(0xFFAFCDDB),
+                              ),
+                              errorStyle: AppTextTheme.poppins(
+                                fontSize: 11.0,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(0xFFF04040),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide:
+                                    const BorderSide(color: Color(0xFFECEEF2)),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
+                            keyboardType: TextInputType.multiline,
+                            textCapitalization: TextCapitalization.sentences,
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                              const EdgeInsets.fromLTRB(12.0, 5.0, 00.0, 5),
+                          child: Image.asset(
+                            'assets/profile/questionthree.png',
+                            width: 300.0,
+                            height: 20.0,
+                          ),
+                        ),
+                        Padding(
+                            padding:
+                                const EdgeInsets.fromLTRB(12, 5.0, 00.0, 12),
+                            child: _topTagsFutureBuilder(topTags)),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 5.0, 00.0, 5),
+                          child: Image.asset(
+                            'assets/profile/questionfour.png',
+                            width: 150.0,
+                            height: 16.0,
+                          ),
+                        ),
+                      ]),
                   Column(
                     children: [
                       InkWell(

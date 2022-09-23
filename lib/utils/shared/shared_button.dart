@@ -385,26 +385,94 @@ class SharedButtons {
 
     final borderRadius = height / 3;
 
+    // return SizedBox(
+    //   height: height,
+    //   child: ButtonTheme(
+    //     minWidth: categoryTagButtonV3MinWidth,
+    //     child: FlatButton(
+    //       padding: const EdgeInsets.all(0),
+    //       splashColor: disableInkSplash ? Colors.transparent : null,
+    //       highlightColor: disableInkSplash ? Colors.transparent : null,
+    //       key: ObjectKey(tag.name),
+    //       shape: RoundedRectangleBorder(
+    //           side: BorderSide(
+    //               color: const Color(0xFF8E71D0), width: selectedBorderWidth),
+    //           borderRadius: BorderRadius.circular(borderRadius)),
+    //       child: Container(
+    //           height: height,
+    //           constraints: const BoxConstraints(minWidth: 50),
+    //           decoration: BoxDecoration(
+    //               color: captureTagColor[tag.color],
+    //               borderRadius: BorderRadius.circular(borderRadius)),
+    //           child: Padding(
+    //             padding: padding ??
+    //                 EdgeInsets.only(
+    //                   left: 8.0,
+    //                   right: (trailingIcon != null || trailing != null)
+    //                       ? 4.0
+    //                       : 8.0,
+    //                 ),
+    //             child: Row(
+    //               mainAxisSize: MainAxisSize.min,
+    //               mainAxisAlignment: MainAxisAlignment.center,
+    //               children: [
+    //                 Text(
+    //                   tag.name,
+    //                   style: AppTextTheme.poppins(
+    //                       fontSize: fontSize,
+    //                       fontWeight: FontWeight.w600,
+    //                       color: textColor),
+    //                 ),
+    //                 if (trailingIcon != null)
+    //                   Padding(
+    //                     padding: const EdgeInsets.only(
+    //                         left: 4.0, top: 2.0, right: 4.0),
+    //                     child: Container(
+    //                       width: 15,
+    //                       height: 15,
+    //                       decoration: BoxDecoration(
+    //                           color: const Color(0xFF506070),
+    //                           borderRadius: BorderRadius.circular(12)),
+    //                       child: Padding(
+    //                         padding: const EdgeInsets.only(bottom: 1.0),
+    //                         child: Icon(
+    //                           trailingIcon,
+    //                           color: Colors.white,
+    //                           size: 14,
+    //                         ),
+    //                       ),
+    //                     ),
+    //                   ),
+    //                 if (trailing != null) trailing
+    //               ],
+    //             ),
+    //           )),
+    //       onPressed: onPressed,
+    //       onLongPress: onLongPressed,
+    //     ),
+    //   ),
+    // );
     return SizedBox(
       height: height,
       child: ButtonTheme(
-        minWidth: categoryTagButtonV3MinWidth,
+        minWidth: captureTagButtonV3MinWidth,
         child: FlatButton(
           padding: const EdgeInsets.all(0),
           splashColor: disableInkSplash ? Colors.transparent : null,
           highlightColor: disableInkSplash ? Colors.transparent : null,
-          key: ObjectKey(tag.name),
+          key: ObjectKey(tag),
           shape: RoundedRectangleBorder(
               side: BorderSide(
-                  color:
-                      isSelected ? const Color(0xFF4F697C) : Colors.transparent,
-                  width: selectedBorderWidth),
+                  color: isSelected
+                      ? const Color(0xFF8E71D0)
+                      : const Color(0xFF4F697C),
+                  width: isSelected ? selectedBorderWidth : 1.0),
               borderRadius: BorderRadius.circular(borderRadius)),
           child: Container(
               height: height,
               constraints: const BoxConstraints(minWidth: 50),
               decoration: BoxDecoration(
-                  color: captureTagColor[tag.color],
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(borderRadius)),
               child: Padding(
                 padding: padding ??
@@ -418,13 +486,11 @@ class SharedButtons {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      tag.name,
-                      style: AppTextTheme.poppins(
-                          fontSize: fontSize,
-                          fontWeight: FontWeight.w600,
-                          color: textColor),
-                    ),
+                    Text(tag.name,
+                        style: AppTextTheme.poppins(
+                            fontSize: fontSize,
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xFF8E71D0))),
                     if (trailingIcon != null)
                       Padding(
                         padding: const EdgeInsets.only(
@@ -433,13 +499,14 @@ class SharedButtons {
                           width: 15,
                           height: 15,
                           decoration: BoxDecoration(
-                              color: const Color(0xFF506070),
+                              color: Colors.transparent,
                               borderRadius: BorderRadius.circular(12)),
                           child: Padding(
-                            padding: const EdgeInsets.only(bottom: 1.0),
+                            padding: const EdgeInsets.only(
+                                bottom: kIsWeb ? 6.0 : 1.5),
                             child: Icon(
                               trailingIcon,
-                              color: Colors.white,
+                              color: const Color(0xFF4F697C),
                               size: 14,
                             ),
                           ),

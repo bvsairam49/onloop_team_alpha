@@ -365,10 +365,13 @@ class CelebrateTabView extends StatelessWidget {
   }
 
   Widget _colleagueTopTags(List<TopTag> topTags) {
+    List topTags = isImproves
+        ? ['Self starter', 'Dot connector']
+        : ['Ultra Learner', 'Self assured'];
+
     final topTagCells = topTags.map((topTag) {
-      final captureTag = topTag.captureTag;
-      return SharedButtons.captureTagButtonV3(
-        tag: captureTag,
+      return SharedButtons.captureTagButtonV4(
+        tag: topTag,
         disableInkSplash: true,
         onPressed: () async {
           // Tags on colleague card.
@@ -378,7 +381,7 @@ class CelebrateTabView extends StatelessWidget {
       );
     }).toList();
 
-    int noOfEmptyCellsRequired = 3 - topTagCells.length;
+    int noOfEmptyCellsRequired = 2 - topTagCells.length;
 
     for (int counter = 0; counter < noOfEmptyCellsRequired; counter++) {
       final emptyCell = SharedButtons.emptyCaptureTagButton();

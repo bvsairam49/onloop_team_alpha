@@ -374,7 +374,7 @@ class CelebrateTabView extends StatelessWidget {
           const SizedBox(height: 10.0),
           const ProfileScreenMetrics(
             isCurrentUserIsManager: true,
-            totalCaptures: 10,
+            totalCaptures: 3,
             captureMadeOnMySelf: 9,
             colleaguesInOrg: 100,
           ),

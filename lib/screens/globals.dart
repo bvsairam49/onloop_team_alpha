@@ -1,6 +1,13 @@
-library my_prj.globals;
+import 'dart:collection';
 
 bool isLoggedIn = false;
 String userEmail;
-var userObject;
-var colleagueList;
+List<dynamic> userObject;
+List<dynamic> colleagueList;
+int totalColleagueSize;
+
+Map<int, dynamic> allCaptures;
+Map<int, dynamic> allTags;
+
+List<dynamic> userPositiveTags;
+List<dynamic> userImproveTags;

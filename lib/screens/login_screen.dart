@@ -42,6 +42,8 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
+    globals.allCaptures = {};
+    globals.allTags = {};
 
     // Start listening to changes.
     idController.addListener(() {
@@ -146,14 +148,40 @@ class _LoginScreenState extends State<LoginScreen> {
         .then((response) {
       if (globals.isLoggedIn == true) {
         var id = globals.userObject[0]['id'];
+        storeCaptures(id);
         res = http.get(Uri.parse(
             "http://localhost:8080/v1/colleagues?id=" + id.toString()));
         res.then((colleagueList) => {
-              globals.colleagueList = colleagueList.body,
+              globals.colleagueList = json.decode(colleagueList.body),
+              globals.totalColleagueSize = globals.colleagueList.length,
+              globals.colleagueList.forEach((element) {
+                storeCaptures(element['id']);
+              }),
               Navigator.of(context, rootNavigator: true)
                   .pushReplacement(AppNavigationPage.pageRoute())
             });
       }
     });
+  }
+}
+
+void storeCaptures(int id) {
+  if (id != null) {
+    Map<int, dynamic> capture;
+
+    var res = http.get(
+        Uri.parse("http://localhost:8080/v1/captures?id=" + id.toString()));
+
+    res.then((response) => {
+          capture = {id: response.body},
+          globals.allCaptures.addAll(capture),
+        });
+
+    res = http
+        .get(Uri.parse("http://localhost:8080/v1/toptags?id=" + id.toString()));
+    res.then((response) => {
+          capture = {id: response.body},
+          globals.allTags.addAll(capture),
+        });
   }
 }

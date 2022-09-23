@@ -124,29 +124,13 @@ class _HomeColleagueCardState extends State<HomeColleagueCard> {
                             children: const [
                               Expanded(
                                 child: ColleagueHeader(
-                                  // colleague: colleague,
                                   colleagueName: 'Sairam',
-                                  prismSummaryUnlocked: false,
-                                  detailsTitle: 'hellp',
-                                  detailsSubtitle: 'hello',
-                                  highlightSubtitle: false,
-                                  navigateToColleagueDetails: null,
-                                  // navigateToColleagueDetails: ,
                                 ),
                               ),
                             ],
                           ),
                         ),
                       ),
-                      // ColleagueHeaderCard(
-                      //   prismSummaryUnlocked: _prismSummaryUnlocked,
-                      //   detailsTitle: detailsTitle,
-                      //   detailsSubtitle: detailsSubtitle,
-                      //   highlightSubtitle: highlightSubtitle,
-                      //   colleague: widget.colleague,
-                      //   navigateToColleagueDetails: _navigateToColleagueDetails,
-                      //   animation: _colleagueCardPrismAnimation,
-                      // ),
                     ],
                   ),
                   Row(
@@ -157,8 +141,6 @@ class _HomeColleagueCardState extends State<HomeColleagueCard> {
                       Expanded(
                           child: Column(
                         children: [
-                          // _prismCardContent(
-                          //     _eligibleCaptureCount, widget.colleague)
                           _colleagueTopTags(
                               _topTags, 'assets/positive_feedback.png'),
                           const SizedBox(height: 10),

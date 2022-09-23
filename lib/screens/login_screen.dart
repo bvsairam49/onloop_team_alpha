@@ -43,7 +43,6 @@ class _LoginScreenState extends State<LoginScreen> {
   void initState() {
     super.initState();
     globals.allCaptures = {};
-    globals.allTags = {};
 
     // Start listening to changes.
     idController.addListener(() {
@@ -143,8 +142,7 @@ class _LoginScreenState extends State<LoginScreen> {
       globals.userPersona = 'Vineet';
       globals.profileAvator = 'https://i.ibb.co/6Y936fD/vineet.png';
     }
-    var res =
-        http.get(Uri.parse("http://192.168.5.187:8080/v1/user?id=" + email));
+    var res = http.get(Uri.parse("http://localhost:8080/v1/user?id=" + email));
     res
         .then((response) => {
               if (response.body != '[]')
@@ -161,7 +159,7 @@ class _LoginScreenState extends State<LoginScreen> {
         var id = globals.userObject[0]['id'];
         storeCaptures(id);
         res = http.get(Uri.parse(
-            "http://192.168.5.187:8080/v1/colleagues?id=" + id.toString()));
+            "http://localhost:8080/v1/colleagues?id=" + id.toString()));
         res.then((colleagueList) => {
               globals.colleagueList = json.decode(colleagueList.body),
               globals.totalColleagueSize = globals.colleagueList.length,
@@ -180,20 +178,19 @@ class _LoginScreenState extends State<LoginScreen> {
   void storeCaptures(int id) {
     if (id != null) {
       Map<int, dynamic> capture;
-
-      var res = http.get(Uri.parse(
-          "http://192.168.5.187:8080/v1/captures?id=" + id.toString()));
+      globals.currentUserid = id;
+      var res = http.get(
+          Uri.parse("http://localhost:8080/v1/captures?id=" + id.toString()));
 
       res.then((response) => {
             capture = {id: response.body},
             globals.allCaptures.addAll(capture),
           });
 
-      res = http.get(Uri.parse(
-          "http://192.168.5.187:8080/v1/toptags?id=" + id.toString()));
+      res = http.get(
+          Uri.parse("http://localhost:8080/v1/toptags?id=" + id.toString()));
       res.then((response) => {
-            capture = {id: response.body},
-            globals.allTags.addAll(capture),
+            globals.setTopTags(id, response.body.toString()),
           });
     }
   }

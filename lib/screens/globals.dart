@@ -14,11 +14,14 @@ String profileAvator;
 List<dynamic> userObject;
 List<dynamic> colleagueList;
 int totalColleagueSize;
+int currentUserid;
 
 Map<int, dynamic> allCaptures;
 Map<int, dynamic> allTags;
+Map<int, List<TopTag>> topTags = {};
 
 List<TopTag> allAvailableTags = [];
+List<TopTag> topTagsNow = [];
 
 List<dynamic> userPositiveTags;
 List<dynamic> userImproveTags;
@@ -28,8 +31,27 @@ List<String> getAllColleagues() {
   colleagueList.forEach((element) {
     response.add(element['name'].toString());
   });
-  debugPrint(response.toString());
   return response;
+}
+
+void setTopTags(int id, String captures) {
+  List data = jsonDecode(captures);
+  data.forEach((element) {
+    TopTag t = TopTag(
+        captureTag: CaptureTag(
+            id: '1',
+            name: element['text'],
+            isCustom: false,
+            color: CaptureTagColor.blue,
+            tagDescription: element['text'],
+            categoryDescription: 'd',
+            disciplineName: 'a',
+            type: '1'),
+        count: 1);
+
+    topTagsNow.add(t);
+  });
+  topTags[id] = topTagsNow;
 }
 
 List<String> getAllTags() {

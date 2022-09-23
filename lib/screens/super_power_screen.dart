@@ -47,6 +47,15 @@ class _SuperPowerScreenState extends State<SuperPowerScreen> {
     super.initState();
   }
 
+  bool visibilityState = true;
+  buttonPrssed() {
+    debugPrint("i was called");
+    setState(() {
+      visibilityState = false;
+    });
+    debugPrint(visibilityState.toString());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -322,42 +331,49 @@ class _SuperPowerScreenState extends State<SuperPowerScreen> {
     return Column(
       children: [
         const SizedBox(height: 8.0),
-        SharedButtons.actionFlatRectButton(
-          disablePadding: true,
-          title: text,
-          height: 36,
-          fontSize: 15,
-          fontWeight: FontWeight.w500,
-          buttonImgPath: 'assets/Plus.png',
-          buttonImgHeight: 10,
-          //change here
-          onPressed: () async {
-            showToastWidget(
-              NotificationToast.toastWidget(
-                logoPath: 'assets/Trophy.png',
-                title: 'Your wins were shared with your manager',
-              ),
-              context: context,
-              animation: StyledToastAnimation.slideFromTop,
-              reverseAnimation: StyledToastAnimation.slideToTopFade,
-              position: const StyledToastPosition(align: Alignment.topCenter),
-              startOffset: const Offset(0.0, -4.0),
-              reverseEndOffset: const Offset(0.0, -4.0),
-              animDuration: const Duration(milliseconds: 500),
-              duration: const Duration(seconds: 4),
-              curve: Curves.easeIn,
-              reverseCurve: Curves.easeOut,
-              isIgnoring: false,
-            );
-            // await Navigator.of(context, rootNavigator: true).push(
-            //   CapturePageWrapper.pageRoute(
-            //     CapturePageWrapper(selectedColleague: widget.colleague),
-            //   ),
-            // );
-            // Check for eligibility again.
-            setState(() {});
-          },
-        ),
+        Visibility(
+            visible: visibilityState,
+            child: visibilityState == true
+                ? SharedButtons.actionFlatRectButton(
+                    disablePadding: true,
+                    title: text,
+                    height: 36,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500,
+                    buttonImgPath: 'assets/Plus.png',
+                    buttonImgHeight: 10,
+
+                    //change here
+                    onPressed: () async {
+                      buttonPrssed();
+                      showToastWidget(
+                        NotificationToast.toastWidget(
+                          logoPath: 'assets/Trophy.png',
+                          title: 'Your wins were shared with your manager',
+                        ),
+                        context: context,
+                        animation: StyledToastAnimation.slideFromTop,
+                        reverseAnimation: StyledToastAnimation.slideToTopFade,
+                        position: const StyledToastPosition(
+                            align: Alignment.topCenter),
+                        startOffset: const Offset(0.0, -4.0),
+                        reverseEndOffset: const Offset(0.0, -4.0),
+                        animDuration: const Duration(milliseconds: 500),
+                        duration: const Duration(seconds: 4),
+                        curve: Curves.easeIn,
+                        reverseCurve: Curves.easeOut,
+                        isIgnoring: false,
+                      );
+                      // await Navigator.of(context, rootNavigator: true).push(
+                      //   CapturePageWrapper.pageRoute(
+                      //     CapturePageWrapper(selectedColleague: widget.colleague),
+                      //   ),
+                      // );
+                      // Check for eligibility again.
+                      setState(() {});
+                    },
+                  )
+                : Container()),
         const SizedBox(height: 8.0),
       ],
     );
@@ -421,7 +437,7 @@ class _SuperPowerScreenState extends State<SuperPowerScreen> {
     if (topTags.length == 1 || topTags.length == 2) {
       final topTagCells = topTags.map((topTag) {
         var captureTag = topTag.captureTag;
-        
+
         return SharedButtons.captureTagButtonV4(
           tag: captureTag.name,
           disableInkSplash: true,

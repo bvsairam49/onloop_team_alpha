@@ -144,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
       globals.profileAvator = 'https://i.ibb.co/6Y936fD/vineet.png';
     }
     var res =
-        http.get(Uri.parse("http://192.168.5.187:8080/v1/user?id=" + email));
+        http.get(Uri.parse("http://10.100.101.44:8080/v1/user?id=" + email));
     res
         .then((response) => {
               if (response.body != '[]')
@@ -158,7 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
         var id = globals.userObject[0]['id'];
         storeCaptures(id);
         res = http.get(Uri.parse(
-            "http://192.168.5.187:8080/v1/colleagues?id=" + id.toString()));
+            "http://10.100.101.44:8080/v1/colleagues?id=" + id.toString()));
         res.then((colleagueList) => {
               globals.colleagueList = json.decode(colleagueList.body),
               globals.totalColleagueSize = globals.colleagueList.length,
@@ -179,7 +179,7 @@ class _LoginScreenState extends State<LoginScreen> {
       Map<int, dynamic> capture;
 
       var res = http.get(Uri.parse(
-          "http://192.168.5.187:8080/v1/captures?id=" + id.toString()));
+          "http://10.100.101.44:8080/v1/captures?id=" + id.toString()));
 
       res.then((response) => {
             capture = {id: response.body},
@@ -187,7 +187,7 @@ class _LoginScreenState extends State<LoginScreen> {
           });
 
       res = http.get(Uri.parse(
-          "http://192.168.5.187:8080/v1/toptags?id=" + id.toString()));
+          "http://10.100.101.44:8080/v1/toptags?id=" + id.toString()));
       res.then((response) => {
             capture = {id: response.body},
             globals.allTags.addAll(capture),

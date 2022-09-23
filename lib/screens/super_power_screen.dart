@@ -10,6 +10,7 @@ import '../utils/misc/app_text_theme.dart';
 import '../utils/misc/screen_size_helper.dart';
 import '../utils/shared/profile_avatar.dart';
 import '../utils/shared/shared_button.dart';
+import 'globals.dart' as globals;
 
 class SuperPowerScreen extends StatefulWidget {
   SuperPowerScreen({Key key, this.title, this.topTagList}) : super(key: key);
@@ -289,13 +290,37 @@ class _SuperPowerScreenState extends State<SuperPowerScreen> {
   }
 
   Widget _colleagueTopTags(List<TopTag> topTags) {
-    final topTagCells = topTags.map((topTag) {
-      final captureTag = topTag.captureTag;
-      return SharedButtons.captureTagButtonV3(
-        tag: captureTag,
+    List tagtoShow = [];
+    if (globals.isImproves) {
+      if (_captureTagSentiment == CaptureTagSentiment.weekly) {
+        tagtoShow = ["self starter", "dot connector"];
+      } else if (_captureTagSentiment == CaptureTagSentiment.monthly) {
+        tagtoShow = ["dot connector", "ultra learner"];
+      } else if (_captureTagSentiment == CaptureTagSentiment.threeMonths) {
+        tagtoShow = ["dot connector", "self assured"];
+      } else if (_captureTagSentiment == CaptureTagSentiment.sixMonths) {
+        tagtoShow = ["self assured"];
+      } else {
+        tagtoShow = ["self assured", "fierce optimisim"];
+      }
+    } else {
+      if (_captureTagSentiment == CaptureTagSentiment.weekly) {
+        tagtoShow = ["dot connector", "fierce optimisim"];
+      } else if (_captureTagSentiment == CaptureTagSentiment.monthly) {
+        tagtoShow = ["dot connector"];
+      } else if (_captureTagSentiment == CaptureTagSentiment.threeMonths) {
+        tagtoShow = ["dot connector", "ultra learner"];
+      } else if (_captureTagSentiment == CaptureTagSentiment.sixMonths) {
+        tagtoShow = ["dot connector", "ultra learner"];
+      } else {
+        tagtoShow = ["dot connector", "self assured"];
+      }
+    }
+    final topTagCells = tagtoShow.map((topTag) {
+      return SharedButtons.captureTagButtonV4(
+        tag: topTag,
         disableInkSplash: true,
         onPressed: () async {
-          debugPrint('i was trapped');
           // Tags on colleague card.
           // KeyboardHiderHelper.hideKeyboard(context);
           // await _navigateToColleagueDetails(colleague);

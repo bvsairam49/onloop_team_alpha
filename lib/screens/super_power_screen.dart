@@ -12,6 +12,7 @@ import '../utils/misc/screen_size_helper.dart';
 import '../utils/shared/profile_avatar.dart';
 import '../utils/shared/shared_button.dart';
 import 'capture_page.dart';
+import 'globals.dart' as globals;
 
 class SuperPowerScreen extends StatefulWidget {
   SuperPowerScreen(
@@ -46,6 +47,15 @@ class _SuperPowerScreenState extends State<SuperPowerScreen> {
           widget.isSuperPower ? vineetSuperPowerList : vineetBlindSpotsList;
     }
     super.initState();
+  }
+
+  bool visibilityState = true;
+  buttonPrssed() {
+    debugPrint("i was called");
+    setState(() {
+      visibilityState = false;
+    });
+    debugPrint(visibilityState.toString());
   }
 
   @override
@@ -203,7 +213,7 @@ class _SuperPowerScreenState extends State<SuperPowerScreen> {
                 ),
               ),
               Text(
-                'Congratulations on turning your blindspot into a superpower. These tags will be added to your superpowers tag list.',
+                'Congratulations on turning your blindspot into a superpower. These tags will now be removed from your blindspots tag list.',
                 style: AppTextTheme.poppins(
                   fontSize: 11,
                   fontWeight: FontWeight.w600,
@@ -328,57 +338,65 @@ class _SuperPowerScreenState extends State<SuperPowerScreen> {
     return Column(
       children: [
         const SizedBox(height: 8.0),
-        SharedButtons.actionFlatRectButton(
-          disablePadding: true,
-          title: text,
-          height: 36,
-          fontSize: 15,
-          fontWeight: FontWeight.w500,
-          buttonImgPath: 'assets/Plus.png',
-          buttonImgHeight: 10,
-          //change here
-          onPressed: () async {
-            if (widget.isSuperPower) {
-              showToastWidget(
-                NotificationToast.toastWidget(
-                  logoPath: 'assets/Trophy.png',
-                  title: 'Your wins were shared with your manager',
-                ),
-                context: context,
-                animation: StyledToastAnimation.slideFromTop,
-                reverseAnimation: StyledToastAnimation.slideToTopFade,
-                position: const StyledToastPosition(align: Alignment.topCenter),
-                startOffset: const Offset(0.0, -4.0),
-                reverseEndOffset: const Offset(0.0, -4.0),
-                animDuration: const Duration(milliseconds: 500),
-                duration: const Duration(seconds: 4),
-                curve: Curves.easeIn,
-                reverseCurve: Curves.easeOut,
-                isIgnoring: false,
-              );
-            } else {
-              // Navigator.push(
-              //   context,
-              //   (MaterialPageRoute(builder: (context) {
-              //     return CapturePage(
-              //       topTags: [],
-              //     );
-              //   })),
-              // );
-              Navigator.of(context).push(CapturePage.pageRoute(CapturePage(
-                isSuperPowerFlow: true,
-              )));
-            }
+        Visibility(
+            visible: visibilityState,
+            child: visibilityState == true
+                ? SharedButtons.actionFlatRectButton(
+                    disablePadding: true,
+                    title: text,
+                    height: 36,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500,
+                    buttonImgPath: 'assets/Plus.png',
+                    buttonImgHeight: 10,
 
-            // await Navigator.of(context, rootNavigator: true).push(
-            //   CapturePageWrapper.pageRoute(
-            //     CapturePageWrapper(selectedColleague: widget.colleague),
-            //   ),
-            // );
-            // Check for eligibility again.
-            setState(() {});
-          },
-        ),
+                    //change here
+                    onPressed: () async {
+                      buttonPrssed();
+                      if (widget.isSuperPower) {
+                        showToastWidget(
+                          NotificationToast.toastWidget(
+                            logoPath: 'assets/Trophy.png',
+                            title: 'Your wins were shared with your manager',
+                          ),
+                          context: context,
+                          animation: StyledToastAnimation.slideFromTop,
+                          reverseAnimation: StyledToastAnimation.slideToTopFade,
+                          position: const StyledToastPosition(
+                              align: Alignment.topCenter),
+                          startOffset: const Offset(0.0, -4.0),
+                          reverseEndOffset: const Offset(0.0, -4.0),
+                          animDuration: const Duration(milliseconds: 500),
+                          duration: const Duration(seconds: 4),
+                          curve: Curves.easeIn,
+                          reverseCurve: Curves.easeOut,
+                          isIgnoring: false,
+                        );
+                      } else {
+                        // Navigator.push(
+                        //   context,
+                        //   (MaterialPageRoute(builder: (context) {
+                        //     return CapturePage(
+                        //       topTags: [],
+                        //     );
+                        //   })),
+                        // );
+                        Navigator.of(context)
+                            .push(CapturePage.pageRoute(CapturePage(
+                          isSuperPowerFlow: true,
+                        )));
+                      }
+
+                      // await Navigator.of(context, rootNavigator: true).push(
+                      //   CapturePageWrapper.pageRoute(
+                      //     CapturePageWrapper(selectedColleague: widget.colleague),
+                      //   ),
+                      // );
+                      // Check for eligibility again.
+                      setState(() {});
+                    },
+                  )
+                : Container()),
         const SizedBox(height: 8.0),
       ],
     );
@@ -392,38 +410,119 @@ class _SuperPowerScreenState extends State<SuperPowerScreen> {
   }
 
   Widget _colleagueTopTags(List<TopTag> topTags) {
-    final topTagCells = topTags.map((topTag) {
-      final captureTag = topTag.captureTag;
-      return SharedButtons.captureTagButtonV3(
-        tag: captureTag,
-        disableInkSplash: true,
-        onPressed: () async {
-          debugPrint('i was trapped');
-          // Tags on colleague card.
-          // KeyboardHiderHelper.hideKeyboard(context);
-          // await _navigateToColleagueDetails(colleague);
-        },
-      );
-    }).toList();
-
-    int noOfEmptyCellsRequired = 3 - topTagCells.length;
-
-    for (int counter = 0; counter < noOfEmptyCellsRequired; counter++) {
-      final emptyCell =
-          SharedButtons.emptyCaptureTagButton(height: 1, width: 1);
-      topTagCells.add(emptyCell);
+    List tagtoShow = [];
+    if (globals.isImproves) {
+      if (_captureTagSentiment == CaptureTagSentiment.weekly) {
+        tagtoShow = [
+          "Self Starter",
+          "Dot Connector",
+        ];
+      } else if (_captureTagSentiment == CaptureTagSentiment.monthly) {
+        tagtoShow = ["Dot Connector", "Ultra Learner"];
+      } else if (_captureTagSentiment == CaptureTagSentiment.threeMonths) {
+        tagtoShow = ["Dot Connector", "Self Assured"];
+      } else if (_captureTagSentiment == CaptureTagSentiment.sixMonths) {
+        tagtoShow = ["Self Assured"];
+      } else {
+        tagtoShow = ["Self Assured", "Fierce Optimisim"];
+      }
+    } else {
+      if (_captureTagSentiment == CaptureTagSentiment.weekly) {
+        tagtoShow = [
+          'Self Starter',
+          'Dot Connector',
+          "Ultra Learner",
+          "Self Assured"
+        ];
+      } else if (_captureTagSentiment == CaptureTagSentiment.monthly) {
+        tagtoShow = ["Attention To Detail", "Thinking On The Fly"];
+      } else if (_captureTagSentiment == CaptureTagSentiment.threeMonths) {
+        tagtoShow = [
+          "Attention To Detail",
+          "Thinking On The Fly",
+          "Fierce Optimism"
+        ];
+      } else if (_captureTagSentiment == CaptureTagSentiment.sixMonths) {
+        tagtoShow = [
+          "Attention To Detail",
+          "Thinking On The Fly",
+          "Fierce Optimism",
+          "Resilience To Adversity"
+        ];
+      } else {
+        tagtoShow = [
+          "Attention To Detail",
+          "Thinking On The Fly",
+          "Resilience To Adversity"
+        ];
+      }
     }
+    if (topTags.length == 1 || topTags.length == 2) {
+      final topTagCells = topTags.map((topTag) {
+        var captureTag = topTag.captureTag;
 
-    return Row(
-      children: [
-        Expanded(
-          child: Wrap(
-            spacing: 8.0,
-            runSpacing: 8.0,
-            children: topTagCells,
-          ),
-        )
-      ],
-    );
+        return SharedButtons.captureTagButtonV4(
+          tag: captureTag.name,
+          disableInkSplash: true,
+          onPressed: () async {
+            // Tags on colleague card.
+            // KeyboardHiderHelper.hideKeyboard(context);
+            // await _navigateToColleagueDetails(colleague);
+          },
+        );
+      }).toList();
+
+      int noOfEmptyCellsRequired = 3 - topTagCells.length;
+
+      for (int counter = 0; counter < noOfEmptyCellsRequired; counter++) {
+        final emptyCell =
+            SharedButtons.emptyCaptureTagButton(height: 1, width: 1);
+        topTagCells.add(emptyCell);
+      }
+
+      return Row(
+        children: [
+          Expanded(
+            child: Wrap(
+              spacing: 8.0,
+              runSpacing: 8.0,
+              children: topTagCells,
+            ),
+          )
+        ],
+      );
+    } else {
+      final topTagCells = tagtoShow.map((topTag) {
+        return SharedButtons.captureTagButtonV4(
+          tag: topTag,
+          disableInkSplash: true,
+          onPressed: () async {
+            // Tags on colleague card.
+            // KeyboardHiderHelper.hideKeyboard(context);
+            // await _navigateToColleagueDetails(colleague);
+          },
+        );
+      }).toList();
+
+      int noOfEmptyCellsRequired = 3 - topTagCells.length;
+
+      for (int counter = 0; counter < noOfEmptyCellsRequired; counter++) {
+        final emptyCell =
+            SharedButtons.emptyCaptureTagButton(height: 1, width: 1);
+        topTagCells.add(emptyCell);
+      }
+
+      return Row(
+        children: [
+          Expanded(
+            child: Wrap(
+              spacing: 8.0,
+              runSpacing: 8.0,
+              children: topTagCells,
+            ),
+          )
+        ],
+      );
+    }
   }
 }

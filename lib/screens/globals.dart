@@ -15,6 +15,7 @@ List<dynamic> userObject;
 List<dynamic> colleagueList;
 int totalColleagueSize;
 int currentUserid;
+var isImproves;
 
 bool isSuperPowerCaptured = false;
 

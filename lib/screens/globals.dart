@@ -85,23 +85,26 @@ List<dynamic> sairamColleagueCaptureList = [
   {
     'capture': 'He is doing pretty good job',
     'last_capture': 'Today',
-    'tags_list': ['Ultra learner', 'Self assured'],
-    'name': 'Hilda',
-    'profile_avator': 'https://i.ibb.co/LPThqbM/hilda.png'
+    'tags_list': ['Attention To Detail', 'Fierce Optimism'],
+    'tags_list_improve': ['Ultra Learner', 'Self Assured'],
+    'name': 'Sairam',
+    'profile_avator': 'https://i.ibb.co/wrSQJYp/sairam.jpg'
   },
   {
     'capture': 'He is doing pretty good job',
     'last_capture': 'Yesterday',
     'tags_list': ['Ultra learner', 'Self assured'],
-    'name': 'Jin',
-    'profile_avator': 'https://i.ibb.co/RTkVRsX/jin.png'
+    'tags_list_improve': ['Attention To Detail', 'Thinking On The Fly'],
+    'name': 'Vineet',
+    'profile_avator': 'https://i.ibb.co/6Y936fD/vineet.png'
   },
   {
     'capture': 'He is doing pretty good job',
     'last_capture': '2 days',
-    'tags_list': ['Ultra learner', 'Self assured'],
-    'name': 'Sairam',
-    'profile_avator': 'https://i.ibb.co/wrSQJYp/sairam.jpg'
+    'tags_list': ['Dot Connector', 'Fierce Optimism'],
+    'tags_list_improve': ['Resilience To Adversity', 'Self Assured'],
+    'name': 'Mizan',
+    'profile_avator': 'https://i.ibb.co/fdxSZb9/mizan.png'
   }
 ];
 
@@ -110,34 +113,37 @@ List<dynamic> vineetColleagueCaptureList = [
     'capture': 'He is doing pretty good job',
     'last_capture': 'Yesterday',
     'tags_list': ['Ultra learner', 'Self assured'],
-    'name': 'Sairam',
-    'profile_avator': 'https://i.ibb.co/wrSQJYp/sairam.jpg'
-  },
-  {
-    'capture': 'He is doing pretty good job',
-    'last_capture': '2 days',
-    'tags_list': ['Ultra learner', 'Self assured'],
+    'tags_list_improve': ['Attention To Detail', 'Thinking On The Fly'],
     'name': 'Vineet',
     'profile_avator': 'https://i.ibb.co/6Y936fD/vineet.png'
   },
   {
     'capture': 'He is doing pretty good job',
     'last_capture': 'Today',
-    'tags_list': ['Ultra learner', 'Self assured'],
+    'tags_list': ['Attention To Detail', 'Fierce Optimism'],
+    'tags_list_improve': ['Ultra Learner', 'Self Assured'],
+    'name': 'Sairam',
+    'profile_avator': 'https://i.ibb.co/wrSQJYp/sairam.jpg'
+  },
+  {
+    'capture': 'He is doing pretty good job',
+    'last_capture': '2 days',
+    'tags_list': ['Dot Connector', 'Fierce Optimism'],
+    'tags_list_improve': ['Resilience To Adversity', 'Self Assured'],
     'name': 'Mizan',
     'profile_avator': 'https://i.ibb.co/fdxSZb9/mizan.png'
-  },
+  }
 ];
 
 Map<String, int> sairamMetrics = {
   'total_capture': 10,
-  'colleague_captured_on': 9,
-  'colleagues_in_org': 18,
+  'colleague_captured_on': 7,
+  'colleagues_in_org': 17,
 };
 Map<String, int> vineetMetrics = {
-  'total_capture': 100,
-  'colleague_captured_on': 19,
-  'colleagues_in_org': 10,
+  'total_capture': 18,
+  'colleague_captured_on': 9,
+  'colleagues_in_org': 27,
 };
 
 List<dynamic> vineetCaptureHistoryList = [
@@ -197,4 +203,40 @@ List<dynamic> sairamCaptureHistoryList = [
     'name': 'Mizan',
     'profile_avator': 'https://i.ibb.co/fdxSZb9/mizan.png'
   },
+];
+
+List<Map<String, dynamic>> sairamSuperPowerList = [
+  {
+    'capture':
+        'Vineet\'s top blindspot is your top superpower. Help them get better at',
+    'profile_avator': 'https://i.ibb.co/6Y936fD/vineet.png',
+    'name': 'Vineet'
+  }
+];
+
+List<Map<String, dynamic>> vineetSuperPowerList = [
+  {
+    'capture':
+        'Sairam\'s top blindspot is your top superpower. Help them get better at',
+    'profile_avator': 'https://i.ibb.co/wrSQJYp/sairam.jpg',
+    'name': 'Sairam'
+  }
+];
+
+List<Map<String, dynamic>> vineetBlindSpotsList = [
+  {
+    'capture':
+        'Sairam’s top superpower is your top blindspot. Reach out to them to get help for',
+    'profile_avator': 'https://i.ibb.co/wrSQJYp/sairam.jpg',
+    'name': 'Sairam'
+  }
+];
+
+List<Map<String, dynamic>> sairamBlindSpotsList = [
+  {
+    'capture':
+        'Vineet’s top superpower is your top blindspot. Reach out to them to get help for',
+    'profile_avator': 'https://i.ibb.co/6Y936fD/vineet.png',
+    'name': 'Vineet'
+  }
 ];

@@ -308,6 +308,6 @@ extension CaptureTagSentimentUtil on CaptureTagSentiment {
     CaptureTagSentiment.monthly: 'M',
     CaptureTagSentiment.threeMonths: '3M',
     CaptureTagSentiment.sixMonths: '6M',
-    CaptureTagSentiment.yearly: 'Y',
+    CaptureTagSentiment.yearly: 'All',
   };
 }

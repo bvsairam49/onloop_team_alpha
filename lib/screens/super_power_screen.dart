@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:get_it/get_it.dart';
 import 'package:team_alpha/model/top_tags.dart';
+import 'package:team_alpha/screens/globals.dart';
 import 'package:team_alpha/utils/common_widgets/sliding_option_selector.dart';
 
 import '../utils/common_widgets/notification_toast.dart';
@@ -13,9 +14,11 @@ import '../utils/shared/shared_button.dart';
 import 'globals.dart' as globals;
 
 class SuperPowerScreen extends StatefulWidget {
-  SuperPowerScreen({Key key, this.title, this.topTagList}) : super(key: key);
+  SuperPowerScreen({Key key, this.title, this.topTagList, this.isSuperPower})
+      : super(key: key);
   final List<TopTag> topTagList;
   final String title;
+  final bool isSuperPower;
 
   @override
   State<SuperPowerScreen> createState() => _SuperPowerScreenState();
@@ -28,10 +31,19 @@ class SuperPowerScreen extends StatefulWidget {
 class _SuperPowerScreenState extends State<SuperPowerScreen> {
   final ScreenSizeHelper _screenSizeHelper = GetIt.instance<ScreenSizeHelper>();
   CaptureTagSentiment _captureTagSentiment;
+  List<Map<String, dynamic>> _nextActions = [];
+
   @override
   void initState() {
     // TODO: implement initState
     _captureTagSentiment = CaptureTagSentiment.weekly;
+    if (userPersona.toLowerCase() == 'sairam') {
+      _nextActions =
+          widget.isSuperPower ? sairamSuperPowerList : sairamBlindSpotsList;
+    } else {
+      _nextActions =
+          widget.isSuperPower ? vineetSuperPowerList : vineetBlindSpotsList;
+    }
     super.initState();
   }
 
@@ -57,7 +69,9 @@ class _SuperPowerScreenState extends State<SuperPowerScreen> {
                   Row(
                     children: [
                       Text(
-                        'Top superpowers at present',
+                        widget.isSuperPower
+                            ? 'Top superpowers'
+                            : 'Top blindspots',
                         style: AppTextTheme.poppins(
                           fontSize: 19,
                           fontWeight: FontWeight.w600,
@@ -113,7 +127,9 @@ class _SuperPowerScreenState extends State<SuperPowerScreen> {
           const SizedBox(
             height: 8,
           ),
-          superPowerWeeklyInsights()
+          widget.isSuperPower
+              ? superPowerWeeklyInsights()
+              : blindSpotsWeeklyInsights()
         ]),
       ),
     );
@@ -140,7 +156,16 @@ class _SuperPowerScreenState extends State<SuperPowerScreen> {
           const SizedBox(
             height: 8,
           ),
-          nextActionsInsights()
+          ListView.separated(
+            shrinkWrap: true,
+            itemCount: _nextActions.length,
+            itemBuilder: (BuildContext context, int index) {
+              return nextActionsInsights(_nextActions[index]);
+            },
+            separatorBuilder: (BuildContext context, int index) {
+              return const SizedBox(height: 15);
+            },
+          )
         ]),
       ),
     );
@@ -190,7 +215,51 @@ class _SuperPowerScreenState extends State<SuperPowerScreen> {
     );
   }
 
-  Widget nextActionsInsights() {
+  Widget blindSpotsWeeklyInsights() {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(color: const Color(0xFFE9F3F8)),
+        borderRadius: BorderRadius.circular(12.0),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SizedBox(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                  width: 46,
+                  height: 48,
+                  child: Image.asset('assets/negative_feedback.png')),
+              Text(
+                'Great job identifying new blindspots',
+                style: AppTextTheme.poppins(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                  color: const Color(0xFF4F697C),
+                ),
+              ),
+              Text(
+                'Based on your recent Captures you’ve discovered new blindspots. Now turn them into your superpowers by Capturing Celebrates on the same tags.',
+                style: AppTextTheme.poppins(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  color: const Color(0xFF7C9AB5),
+                ),
+                textAlign: TextAlign.center,
+              ),
+              _topTagsFutureBuilder(
+                  [widget.topTagList.first, widget.topTagList.last]),
+              _captureButton('Capture a Celebrate'),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget nextActionsInsights(Map<String, dynamic> item) {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -203,34 +272,46 @@ class _SuperPowerScreenState extends State<SuperPowerScreen> {
           children: [
             Row(
               children: [
-                const ProfileAvatar(
+                ProfileAvatar(
                   radius: 24,
                   enableEmoji: false,
                   showInitials: false,
                   name: 'Sairam',
                   image: NetworkImage(
-                    'https://i.picsum.photos/id/923/200/200.jpg?hmac=3VHvOqFmO1AmGdpW-XcIVVb5CSOm5AwgyYRt9jYWAvo',
+                    item['profile_avator'],
                   ),
-                  borderColor: Color(0xFFF6FAFD),
+                  borderColor: const Color(0xFFF6FAFD),
                 ),
                 const SizedBox(
                   width: 2,
                 ),
                 Expanded(
                   child: Text(
-                    'Michael Calcada’s top blindspot is your top superpower. Help them get better at',
+                    item['capture'],
                     style: AppTextTheme.poppins(
                       fontSize: 15,
                       fontWeight: FontWeight.w500,
                       color: const Color(0xFF4F697C),
                     ),
                     textAlign: TextAlign.left,
-                    maxLines: 2,
+                    maxLines: 3,
                   ),
                 ),
               ],
             ),
-            _topTagsFutureBuilder([widget.topTagList.first]),
+            _topTagsFutureBuilder([
+              TopTag(
+                  captureTag: CaptureTag(
+                      id: '1',
+                      name: 'Attention To Detail',
+                      isCustom: false,
+                      color: CaptureTagColor.purple,
+                      tagDescription: 'Attention To Detail',
+                      categoryDescription: 'd',
+                      disciplineName: 'a',
+                      type: '1'),
+                  count: 1),
+            ]),
           ],
         ),
       ),
@@ -247,8 +328,9 @@ class _SuperPowerScreenState extends State<SuperPowerScreen> {
           height: 36,
           fontSize: 15,
           fontWeight: FontWeight.w500,
-          buttonImgPath: 'assets/goals/goals_overview_send_icon.png',
+          buttonImgPath: 'assets/Plus.png',
           buttonImgHeight: 10,
+          //change here
           onPressed: () async {
             showToastWidget(
               NotificationToast.toastWidget(

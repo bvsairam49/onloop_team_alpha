@@ -105,7 +105,7 @@ class HomeScreenMetricsState extends State<ProfileScreenMetrics>
                 : _homeScreenMetricsColumn(
                     widget.captureMadeOnMySelf, 'Celebrates \nmade by myself'),
             _homeScreenMetricsColumn(
-                widget.colleaguesCaptures, 'Celebrates \nmade by myself'),
+                widget.captureMadeOnMySelf, 'Celebrates \nmade by myself'),
             _homeScreenMetricsColumn(
                 widget.colleaguesInOrg, 'Celebrates \nreceived')
           ],

@@ -143,6 +143,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 {
                   globals.isLoggedIn = true,
                   globals.userObject = json.decode(response.body),
+                  res = http.get(Uri.parse("http://localhost:8080/v1/tags")),
+                  res.then((response) =>
+                      {globals.setAllAvailableTags(response.body)})
                 }
             })
         .then((response) {

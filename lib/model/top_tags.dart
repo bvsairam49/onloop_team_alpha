@@ -5,6 +5,8 @@ class TopTag {
   final int count;
 
   TopTag({this.captureTag, this.count});
+
+
 }
 
 enum CaptureTagColor {
@@ -52,6 +54,9 @@ class CaptureTag {
       this.tagDescription,
       this.categoryDescription,
       this.disciplineName});
+
+
+  set isSelected(bool isSelected) {}
 
   bool operator ==(obj) =>
       obj is CaptureTag &&

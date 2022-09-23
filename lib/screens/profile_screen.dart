@@ -366,6 +366,7 @@ class CelebrateTabView extends StatelessWidget {
   }
 
   Widget _colleagueTopTags(List<TopTag> topTags) {
+    globals.isImproves = isImproves;
     List topTags = isImproves
         ? ['Self starter', 'Dot connector']
         : ['Ultra Learner', 'Self assured'];

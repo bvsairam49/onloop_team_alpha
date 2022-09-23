@@ -15,6 +15,7 @@ List<dynamic> userObject;
 List<dynamic> colleagueList;
 int totalColleagueSize;
 int currentUserid;
+var isImproves;
 
 Map<int, dynamic> allCaptures;
 Map<int, dynamic> allTags;

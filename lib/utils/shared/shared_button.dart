@@ -263,6 +263,97 @@ class SharedButtons {
     );
   }
 
+  static Widget captureTagButtonV4(
+      {@required String tag,
+      @required Function onPressed,
+      Function onLongPressed,
+      IconData trailingIcon,
+      Widget trailing,
+      double fontSize = captureTagButtonV3DefaultFontSize,
+      double height = captureTagButtonV3MinHeight,
+      EdgeInsets padding,
+      bool isSelected = false,
+      double selectedBorderWidth = 2.0,
+      bool disableInkSplash = false,
+      TextStyle customStyle}) {
+    assert(tag != null && onPressed != null);
+    assert(trailingIcon == null || trailing == null,
+        '''trailingIcon and trailing are mutually exclusive. 
+        Both cannot be non-null''');
+
+    final borderRadius = height / 3;
+
+    return SizedBox(
+      height: height,
+      child: ButtonTheme(
+        minWidth: captureTagButtonV3MinWidth,
+        child: FlatButton(
+          padding: const EdgeInsets.all(0),
+          splashColor: disableInkSplash ? Colors.transparent : null,
+          highlightColor: disableInkSplash ? Colors.transparent : null,
+          key: ObjectKey(tag),
+          shape: RoundedRectangleBorder(
+              side: BorderSide(
+                  color: isSelected
+                      ? const Color(0xFF8E71D0)
+                      : const Color(0xFF4F697C),
+                  width: isSelected ? selectedBorderWidth : 1.0),
+              borderRadius: BorderRadius.circular(borderRadius)),
+          child: Container(
+              height: height,
+              constraints: const BoxConstraints(minWidth: 50),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(borderRadius)),
+              child: Padding(
+                padding: padding ??
+                    EdgeInsets.only(
+                      left: 8.0,
+                      right: (trailingIcon != null || trailing != null)
+                          ? 4.0
+                          : 8.0,
+                    ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(tag,
+                        style: AppTextTheme.poppins(
+                            fontSize: fontSize,
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xFF8E71D0))),
+                    if (trailingIcon != null)
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 4.0, top: 2.0, right: 4.0),
+                        child: Container(
+                          width: 15,
+                          height: 15,
+                          decoration: BoxDecoration(
+                              color: Colors.transparent,
+                              borderRadius: BorderRadius.circular(12)),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                bottom: kIsWeb ? 6.0 : 1.5),
+                            child: Icon(
+                              trailingIcon,
+                              color: const Color(0xFF4F697C),
+                              size: 14,
+                            ),
+                          ),
+                        ),
+                      ),
+                    if (trailing != null) trailing
+                  ],
+                ),
+              )),
+          onPressed: onPressed,
+          onLongPress: onLongPressed,
+        ),
+      ),
+    );
+  }
+
   static const double categoryTagButtonV3DefaultFontSize = 12.0;
   static const double categoryTagButtonV3MinHeight = 26.0;
   static const double categoryTagButtonV3MinWidth = 50.0;

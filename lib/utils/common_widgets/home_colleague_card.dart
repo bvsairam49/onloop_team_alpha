@@ -6,7 +6,8 @@ import '../shared/shared_button.dart';
 import 'colleage_header.dart';
 
 class HomeColleagueCard extends StatefulWidget {
-  HomeColleagueCard({Key key}) : super(key: key);
+  HomeColleagueCard({Key key, this.captureItem}) : super(key: key);
+  final dynamic captureItem;
   // final Colleague colleague;
 
   @override
@@ -121,10 +122,14 @@ class _HomeColleagueCardState extends State<HomeColleagueCard> {
                         child: Padding(
                           padding: const EdgeInsets.only(top: 9.0),
                           child: Row(
-                            children: const [
+                            children: [
                               Expanded(
                                 child: ColleagueHeader(
-                                  colleagueName: 'Sairam',
+                                  colleagueName: widget.captureItem['name'],
+                                  detailsTitle:
+                                      widget.captureItem['last_capture'],
+                                  detailsSubtitle:
+                                      widget.captureItem['profile_avator'],
                                 ),
                               ),
                             ],
@@ -141,11 +146,11 @@ class _HomeColleagueCardState extends State<HomeColleagueCard> {
                       Expanded(
                           child: Column(
                         children: [
-                          _colleagueTopTags(
-                              _topTags, 'assets/positive_feedback.png'),
+                          _colleagueTopTags(widget.captureItem['tags_list'],
+                              'assets/positive_feedback.png'),
                           const SizedBox(height: 10),
-                          _colleagueTopTags(
-                              _topTags, 'assets/negative_feedback.png')
+                          _colleagueTopTags(widget.captureItem['tags_list'],
+                              'assets/negative_feedback.png')
                         ],
                       ))
                     ],
@@ -157,11 +162,10 @@ class _HomeColleagueCardState extends State<HomeColleagueCard> {
     );
   }
 
-  Widget _colleagueTopTags(List<TopTag> topTags, sentimentImage) {
+  Widget _colleagueTopTags(List<String> topTags, sentimentImage) {
     final topTagCells = topTags.map((topTag) {
-      final captureTag = topTag.captureTag;
-      return SharedButtons.captureTagButtonV3(
-        tag: captureTag,
+      return SharedButtons.captureTagButtonV4(
+        tag: topTag,
         disableInkSplash: true,
         onPressed: () async {
           // Tags on colleague card.
@@ -174,7 +178,8 @@ class _HomeColleagueCardState extends State<HomeColleagueCard> {
     int noOfEmptyCellsRequired = 3 - topTagCells.length;
 
     for (int counter = 0; counter < noOfEmptyCellsRequired; counter++) {
-      final emptyCell = SharedButtons.emptyCaptureTagButton();
+      final emptyCell =
+          SharedButtons.emptyCaptureTagButton(width: 1, height: 1);
       topTagCells.add(emptyCell);
     }
 

@@ -14,6 +14,15 @@ class HomeColleaguesListView extends StatefulWidget {
 class _HomeColleaguesListViewState extends State<HomeColleaguesListView> {
   double edgeInsetTop = 0.0;
   double edgeInsetBottom = 16.0;
+  List<dynamic> captureList;
+  @override
+  void initState() {
+    captureList = globals.userPersona == 'sairam'
+        ? globals.sairamColleagueCaptureList
+        : globals.vineetColleagueCaptureList;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -34,10 +43,12 @@ class _HomeColleaguesListViewState extends State<HomeColleaguesListView> {
             physics: const NeverScrollableScrollPhysics(),
             padding:
                 EdgeInsets.only(top: edgeInsetTop, bottom: edgeInsetBottom),
-            itemCount: 5,
+            itemCount: captureList.length,
             shrinkWrap: true,
             itemBuilder: (context, index) {
-              return HomeColleagueCard();
+              return HomeColleagueCard(
+                captureItem: captureList[index],
+              );
             })
       ],
     );

@@ -136,6 +136,13 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   loginAuth() {
+    if (email.toLowerCase() == 'sairam@onloop.io') {
+      globals.userPersona = 'Sairam';
+      globals.profileAvator = 'https://i.ibb.co/wrSQJYp/sairam.jpg';
+    } else if (email.toLowerCase() == 'vineet@onloop.io') {
+      globals.userPersona = 'Vineet';
+      globals.profileAvator = 'https://i.ibb.co/6Y936fD/vineet.png';
+    }
     var res =
         http.get(Uri.parse("http://192.168.5.187:8080/v1/user?id=" + email));
     res
@@ -158,31 +165,33 @@ class _LoginScreenState extends State<LoginScreen> {
               globals.colleagueList.forEach((element) {
                 storeCaptures(element['id']);
               }),
-              Navigator.of(context, rootNavigator: true)
-                  .pushReplacement(AppNavigationPage.pageRoute())
+              Future.delayed(const Duration(seconds: 1)).then((_) async {
+                Navigator.of(context, rootNavigator: true)
+                    .pushReplacement(AppNavigationPage.pageRoute());
+              }),
             });
       }
     });
   }
-}
 
-void storeCaptures(int id) {
-  if (id != null) {
-    Map<int, dynamic> capture;
+  void storeCaptures(int id) {
+    if (id != null) {
+      Map<int, dynamic> capture;
 
-    var res = http.get(
-        Uri.parse("http://192.168.5.187:8080/v1/captures?id=" + id.toString()));
+      var res = http.get(Uri.parse(
+          "http://192.168.5.187:8080/v1/captures?id=" + id.toString()));
 
-    res.then((response) => {
-          capture = {id: response.body},
-          globals.allCaptures.addAll(capture),
-        });
+      res.then((response) => {
+            capture = {id: response.body},
+            globals.allCaptures.addAll(capture),
+          });
 
-    res = http.get(
-        Uri.parse("http://192.168.5.187:8080/v1/toptags?id=" + id.toString()));
-    res.then((response) => {
-          capture = {id: response.body},
-          globals.allTags.addAll(capture),
-        });
+      res = http.get(Uri.parse(
+          "http://192.168.5.187:8080/v1/toptags?id=" + id.toString()));
+      res.then((response) => {
+            capture = {id: response.body},
+            globals.allTags.addAll(capture),
+          });
+    }
   }
 }

@@ -70,17 +70,17 @@ class HeaderWithProfilePicture extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.only(
+          Padding(
+            padding: const EdgeInsets.only(
               right: 10,
               bottom: 10,
             ),
             child: ProfileAvatar(
-              image: NetworkImage(
-                  'https://i.picsum.photos/id/923/200/200.jpg?hmac=3VHvOqFmO1AmGdpW-XcIVVb5CSOm5AwgyYRt9jYWAvo'),
+              image:
+                  detailsSubtitle != '' ? NetworkImage(detailsSubtitle) : null,
               radius: 22,
-              showInitials: false,
-              name: 'sairam',
+              showInitials: detailsSubtitle == '',
+              name: colleagueName,
               enableEmoji: false,
               borderColor: Colors.transparent,
             ),
@@ -111,7 +111,7 @@ class HeaderWithProfilePicture extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    'Last capture was ongoing goals',
+                    'Last capture was $detailsTitle',
                     style: AppTextTheme.poppins(
                       fontSize: 11,
                       fontWeight: FontWeight.w500,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:team_alpha/model/top_tags.dart';
+import 'package:team_alpha/screens/globals.dart';
 import 'package:team_alpha/screens/super_power_screen.dart';
 import '../utils/common_widgets/capture_detail_card.dart';
 import '../utils/common_widgets/capture_metrics_widget.dart';
@@ -274,19 +275,19 @@ class _ProfileScreenState extends State<ProfileScreen>
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const ProfileAvatar(
+            ProfileAvatar(
               radius: 24,
               enableEmoji: false,
               showInitials: false,
-              name: 'Sairam',
+              name: userPersona,
               image: NetworkImage(
-                'https://i.picsum.photos/id/923/200/200.jpg?hmac=3VHvOqFmO1AmGdpW-XcIVVb5CSOm5AwgyYRt9jYWAvo',
+                profileAvator,
               ),
-              borderColor: Color(0xFFF6FAFD),
+              borderColor: const Color(0xFFF6FAFD),
             ),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.5,
-              child: Text('Venkata sairam', //_colleague?.name,
+              child: Text(userPersona, //_colleague?.name,
                   style: AppTextTheme.poppins(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,

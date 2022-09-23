@@ -10,10 +10,17 @@ import 'package:dropdown_search/dropdown_search.dart';
 
 import '../utils/shared/shared_button.dart';
 import 'globals.dart' as globals;
+import 'globals.dart';
 
 class CapturePage extends StatefulWidget {
-  CapturePage({Key key, this.topTags}) : super(key: key);
+  CapturePage({Key key, this.topTags, this.isSuperPowerFlow = false})
+      : super(key: key);
   final List<TopTag> topTags;
+  final bool isSuperPowerFlow;
+  static PageRoute pageRoute(CapturePage page) {
+    return MaterialPageRoute(builder: (context) => page);
+  }
+
   @override
   State<CapturePage> createState() => _CapturePageState();
 }
@@ -409,7 +416,12 @@ class _CapturePageState extends State<CapturePage> {
             ),
           ),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              if (widget.isSuperPowerFlow) {
+                isSuperPowerCaptured = true;
+                Navigator.of(context).pop();
+              }
+            },
             child: ClipRRect(
               //borderRadius: BorderRadius.circular(20.0),
               child: Padding(

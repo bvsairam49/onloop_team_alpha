@@ -16,6 +16,8 @@ List<dynamic> colleagueList;
 int totalColleagueSize;
 int currentUserid;
 
+bool isSuperPowerCaptured = false;
+
 Map<int, dynamic> allCaptures;
 Map<int, dynamic> allTags;
 Map<int, List<TopTag>> topTags = {};

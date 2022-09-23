@@ -11,9 +11,11 @@ import '../utils/misc/app_text_theme.dart';
 import '../utils/misc/screen_size_helper.dart';
 import '../utils/shared/profile_avatar.dart';
 import '../utils/shared/shared_button.dart';
+import 'capture_page.dart';
 
 class SuperPowerScreen extends StatefulWidget {
-  SuperPowerScreen({Key key, this.title, this.topTagList, this.isSuperPower})
+  SuperPowerScreen(
+      {Key key, this.title, this.topTagList, this.isSuperPower = false})
       : super(key: key);
   final List<TopTag> topTagList;
   final String title;
@@ -97,6 +99,11 @@ class _SuperPowerScreenState extends State<SuperPowerScreen> {
                 ],
               ),
             ),
+            isSuperPowerCaptured
+                ? Image.asset(
+                    'assets/no_blindspots.png',
+                  )
+                : SizedBox(),
             weeklyInsiteWidget(),
             nextActionsWidget()
           ],
@@ -331,23 +338,38 @@ class _SuperPowerScreenState extends State<SuperPowerScreen> {
           buttonImgHeight: 10,
           //change here
           onPressed: () async {
-            showToastWidget(
-              NotificationToast.toastWidget(
-                logoPath: 'assets/Trophy.png',
-                title: 'Your wins were shared with your manager',
-              ),
-              context: context,
-              animation: StyledToastAnimation.slideFromTop,
-              reverseAnimation: StyledToastAnimation.slideToTopFade,
-              position: const StyledToastPosition(align: Alignment.topCenter),
-              startOffset: const Offset(0.0, -4.0),
-              reverseEndOffset: const Offset(0.0, -4.0),
-              animDuration: const Duration(milliseconds: 500),
-              duration: const Duration(seconds: 4),
-              curve: Curves.easeIn,
-              reverseCurve: Curves.easeOut,
-              isIgnoring: false,
-            );
+            if (widget.isSuperPower) {
+              showToastWidget(
+                NotificationToast.toastWidget(
+                  logoPath: 'assets/Trophy.png',
+                  title: 'Your wins were shared with your manager',
+                ),
+                context: context,
+                animation: StyledToastAnimation.slideFromTop,
+                reverseAnimation: StyledToastAnimation.slideToTopFade,
+                position: const StyledToastPosition(align: Alignment.topCenter),
+                startOffset: const Offset(0.0, -4.0),
+                reverseEndOffset: const Offset(0.0, -4.0),
+                animDuration: const Duration(milliseconds: 500),
+                duration: const Duration(seconds: 4),
+                curve: Curves.easeIn,
+                reverseCurve: Curves.easeOut,
+                isIgnoring: false,
+              );
+            } else {
+              // Navigator.push(
+              //   context,
+              //   (MaterialPageRoute(builder: (context) {
+              //     return CapturePage(
+              //       topTags: [],
+              //     );
+              //   })),
+              // );
+              Navigator.of(context).push(CapturePage.pageRoute(CapturePage(
+                isSuperPowerFlow: true,
+              )));
+            }
+
             // await Navigator.of(context, rootNavigator: true).push(
             //   CapturePageWrapper.pageRoute(
             //     CapturePageWrapper(selectedColleague: widget.colleague),

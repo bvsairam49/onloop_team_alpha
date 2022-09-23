@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../misc/app_text_theme.dart';
 import 'home_colleague_card.dart';
+import '../../screens/globals.dart' as globals;
 
 class HomeColleaguesListView extends StatefulWidget {
   const HomeColleaguesListView({Key key}) : super(key: key);
@@ -33,7 +34,7 @@ class _HomeColleaguesListViewState extends State<HomeColleaguesListView> {
             physics: const NeverScrollableScrollPhysics(),
             padding:
                 EdgeInsets.only(top: edgeInsetTop, bottom: edgeInsetBottom),
-            itemCount: 3,
+            itemCount: 5,
             shrinkWrap: true,
             itemBuilder: (context, index) {
               return HomeColleagueCard();

@@ -13,6 +13,7 @@ import 'package:team_alpha/screens/home_screen.dart';
 import 'package:team_alpha/screens/profile_screen.dart';
 
 import '../../model/app_state.dart';
+import '../../screens/capture_page.dart';
 import '../common_widgets/app_navigation_bar.dart';
 import 'app_navigation_services.dart';
 
@@ -211,7 +212,13 @@ class AppNavigationPageState extends State<AppNavigationPage>
             color: Colors.transparent,
           ),
           onPressed: (context) async {
-            debugPrint('hello');
+            Navigator.push(
+              context,
+              (MaterialPageRoute(builder: (context) {
+                return CapturePage();
+              })),
+            );
+
             // GetIt.instance<AnalyticsService>().logButtonPress('add_feedback');
             // HapticFeedback.mediumImpact();
             // final captureCount = _user.captureCount ?? 0;

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:team_alpha/model/top_tags.dart';
 import 'package:team_alpha/screens/super_power_screen.dart';
-
 import '../utils/common_widgets/capture_detail_card.dart';
 import '../utils/common_widgets/capture_metrics_widget.dart';
 import '../utils/common_widgets/onloop_app_bar.dart';
@@ -9,6 +8,7 @@ import '../utils/common_widgets/profile_metric_widget.dart';
 import '../utils/misc/app_text_theme.dart';
 import '../utils/shared/profile_avatar.dart';
 import '../utils/shared/shared_button.dart';
+import 'globals.dart' as globals;
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key key, this.isSelfUser = true}) : super(key: key);
@@ -374,7 +374,7 @@ class CelebrateTabView extends StatelessWidget {
           const SizedBox(height: 10.0),
           const ProfileScreenMetrics(
             isCurrentUserIsManager: true,
-            totalCaptures: 10,
+            totalCaptures: 3,
             captureMadeOnMySelf: 9,
             colleaguesInOrg: 100,
           ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:team_alpha/Screens/profile_screen.dart';
+import 'package:team_alpha/screens/globals.dart';
 
 import '../model/app_state.dart';
 import '../utils/common_widgets/app_navigation_bar.dart';
@@ -14,6 +15,7 @@ import '../utils/shared/animated_badge_stack.dart';
 import '../utils/shared/app_navigation_page.dart';
 import '../utils/shared/home_app_bar.dart';
 import 'package:get_it/get_it.dart';
+import 'globals.dart' as globals;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key key}) : super(key: key);
@@ -28,13 +30,19 @@ class _HomeScreenState extends State<HomeScreen> {
   bool _showLearnBadge;
   ScreenSizeHelper _screenSizeHelper;
   double _appBarHeight;
-
+  String userName;
+  Map<String, int> _userMetrics;
   @override
   void initState() {
     _persistentTabController = PersistentTabController(initialIndex: 0);
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await appNavigationPageStateKey.currentState.navigateToTab(0);
     });
+    if (userPersona.toLowerCase() == 'sairam') {
+      _userMetrics = sairamMetrics;
+    } else {
+      _userMetrics = vineetMetrics;
+    }
     super.initState();
   }
 
@@ -47,7 +55,6 @@ class _HomeScreenState extends State<HomeScreen> {
       GetIt.instance.registerSingleton<ScreenSizeHelper>(screenSizeHelper);
     }
     _screenSizeHelper = GetIt.instance<ScreenSizeHelper>();
-
     return Scaffold(
       backgroundColor: const Color(0xFFF6FAFD),
       extendBodyBehindAppBar: true,
@@ -96,11 +103,12 @@ class _HomeScreenState extends State<HomeScreen> {
         const SizedBox(height: 10.0),
         _greetingBanner(),
         const SizedBox(height: 10.0),
-        const HomeScreenMetrics(
+        HomeScreenMetrics(
           isCurrentUserIsManager: true,
-          totalCaptures: 10,
-          captureMadeOnMySelf: 9,
-          colleaguesInOrg: 100,
+          totalCaptures: _userMetrics['total_capture'],
+          captureMadeOnMySelf: _userMetrics['total_capture'],
+          colleaguesCaptures: _userMetrics['colleague_captured_on'],
+          colleaguesInOrg: _userMetrics['colleagues_in_org'],
         ),
         const SizedBox(height: 10.0),
         Container(
@@ -154,7 +162,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     // final nameToDisplay = NamesHelper.getFirstName(user.name);
-    return Text('Good $greeting, Sairam',
+    return Text('Good $greeting, ' + userPersona,
         textAlign: TextAlign.center,
         style: AppTextTheme.poppins(
             fontSize: 19.0, fontWeight: FontWeight.w600, color: Colors.white));

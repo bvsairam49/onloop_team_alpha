@@ -149,7 +149,8 @@ class _HomeColleagueCardState extends State<HomeColleagueCard> {
                           _colleagueTopTags(widget.captureItem['tags_list'],
                               'assets/positive_feedback.png'),
                           const SizedBox(height: 10),
-                          _colleagueTopTags(widget.captureItem['tags_list'],
+                          _colleagueTopTags(
+                              widget.captureItem['tags_list_improve'],
                               'assets/negative_feedback.png')
                         ],
                       ))

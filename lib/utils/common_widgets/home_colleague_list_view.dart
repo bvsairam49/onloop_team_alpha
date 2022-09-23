@@ -17,7 +17,7 @@ class _HomeColleaguesListViewState extends State<HomeColleaguesListView> {
   List<dynamic> captureList;
   @override
   void initState() {
-    captureList = globals.userPersona == 'sairam'
+    captureList = globals.userPersona.toLowerCase() == 'sairam'
         ? globals.sairamColleagueCaptureList
         : globals.vineetColleagueCaptureList;
     super.initState();

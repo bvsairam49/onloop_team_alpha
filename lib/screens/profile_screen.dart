@@ -340,6 +340,7 @@ class CelebrateTabView extends StatelessWidget {
                 .push(SuperPowerScreen.pageRoute(SuperPowerScreen(
               title: isImproves ? 'Blindspots' : 'Superpowers',
               topTagList: topTags,
+              isSuperPower: !isImproves,
             )));
           },
           child: Row(

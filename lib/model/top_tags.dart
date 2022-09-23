@@ -5,8 +5,6 @@ class TopTag {
   final int count;
 
   TopTag({this.captureTag, this.count});
-
-
 }
 
 enum CaptureTagColor {
@@ -54,7 +52,6 @@ class CaptureTag {
       this.tagDescription,
       this.categoryDescription,
       this.disciplineName});
-
 
   set isSelected(bool isSelected) {}
 
@@ -309,6 +306,6 @@ extension CaptureTagSentimentUtil on CaptureTagSentiment {
     CaptureTagSentiment.monthly: 'M',
     CaptureTagSentiment.threeMonths: '3M',
     CaptureTagSentiment.sixMonths: '6M',
-    CaptureTagSentiment.yearly: 'Y',
+    CaptureTagSentiment.yearly: 'All',
   };
 }

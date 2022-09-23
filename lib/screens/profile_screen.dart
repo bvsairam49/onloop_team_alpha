@@ -28,6 +28,7 @@ class _ProfileScreenState extends State<ProfileScreen>
   double height = 200;
   final Duration _captureTypeSelectionAnimationDuration =
       const Duration(milliseconds: 500);
+  Map<String, int> _userMetrics;
 
   final List<TopTag> _topTags = globals.topTags[globals.currentUserid];
 
@@ -38,7 +39,6 @@ class _ProfileScreenState extends State<ProfileScreen>
       vsync: this,
       animationDuration: const Duration(milliseconds: 1000),
     );
-
     super.initState();
   }
 
@@ -66,50 +66,6 @@ class _ProfileScreenState extends State<ProfileScreen>
             Expanded(child: _pageBuilder()),
           ],
         ),
-
-        // NestedScrollView(
-        //     controller: _scrollController,
-        //     headerSliverBuilder: (context, innerBoxIsScrolled) {
-        //       return [
-
-        //         // SliverAppBar(
-        //         //     elevation: 0,
-        //         //     backgroundColor: Colors.white,
-        //         //     pinned: true,
-        //         //     expandedHeight: height - 35,
-        //         //     flexibleSpace: Stack(
-        //         //       children: [
-        //         //         //_minimizedProfileHeader(ref),
-        //         //         SingleChildScrollView(
-        //         //           child: _profilePictureView(),
-        //         //         )
-        //         //       ],
-        //         //     ))
-
-        //         // SliverPersistentHeader(
-        //         //   delegate: _SliverAppBarDelegate(
-        //         //     _selectFeedbackAppBar(),
-        //         //   ),
-        //         //   pinned: true,
-        //         // )
-        //       ];
-        //     },
-        //     body: Container(
-        //         color: const Color(0xffF6FAFD),
-        //         child: Column(
-        //           children: const [
-        //             SizedBox()
-        //             // if (!_isSelf &&
-        //             //     _captureTagFilter.sentiment !=
-        //             //         CaptureTagSentiment.neutral &&
-        //             //     widget.colleague?.userRef != null &&
-        //             //     widget.colleague?.connectedStatus ==
-        //             //         ConnectedStatus.connected)
-        //             //   _captureRequestButton(),
-        //             // Expanded(child: _pageBuilder(_captureTagFilter)),
-        //             // if (!_isSelf) _addFeedbackButton(),
-        //           ],
-        //         ))),
       ),
     );
   }
@@ -159,7 +115,7 @@ class _ProfileScreenState extends State<ProfileScreen>
               'assets/profile/improve_active.png',
             ),
             secondChild: Image.asset(
-              'assets/profile/improve_disabled.png',
+              'assets/profile/improve_active.png',
             ),
             duration: _captureTypeSelectionAnimationDuration,
             crossFadeState: CrossFadeState.showSecond,
@@ -243,6 +199,7 @@ class _ProfileScreenState extends State<ProfileScreen>
         CelebrateTabView(
           title: 'Improves',
           topTags: _topTags,
+          isImproves: true,
         )
         // CelebrateTabView(
         //   captureType: CaptureTagSentiment.positive,
@@ -265,12 +222,27 @@ class _ProfileScreenState extends State<ProfileScreen>
 }
 
 class CelebrateTabView extends StatelessWidget {
-  const CelebrateTabView({Key key, this.title, this.topTags}) : super(key: key);
+  const CelebrateTabView(
+      {Key key, this.title, this.topTags, this.isImproves = false})
+      : super(key: key);
 
   final String title;
   final List<TopTag> topTags;
+  final bool isImproves;
+
   @override
   Widget build(BuildContext context) {
+    Map<String, int> _userMetrics;
+    List<dynamic> captureList;
+
+    if (userPersona.toLowerCase() == 'sairam') {
+      _userMetrics = sairamMetrics;
+      captureList = sairamCaptureHistoryList;
+    } else {
+      _userMetrics = vineetMetrics;
+      captureList = vineetCaptureHistoryList;
+    }
+
     return Container(
       color: const Color(0xFFF6FAFD),
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
@@ -286,15 +258,17 @@ class CelebrateTabView extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10.0),
-          const ProfileScreenMetrics(
+          ProfileScreenMetrics(
             isCurrentUserIsManager: true,
-            totalCaptures: 3,
-            captureMadeOnMySelf: 9,
-            colleaguesInOrg: 100,
+            totalCaptures: _userMetrics['total_capture'],
+            captureMadeOnMySelf: _userMetrics['colleague_captured_on'],
+            colleaguesInOrg: _userMetrics['colleagues_in_org'],
           ),
           const SizedBox(height: 10.0),
           _getSuperPowersTagsView(
-              context, 'Superpowers', const Color(0xFF4F697C)),
+              context,
+              isImproves ? 'Blindspots' : 'Superpowers',
+              const Color(0xFF4F697C)),
           Container(
             decoration: BoxDecoration(
               color: Colors.white,
@@ -321,12 +295,26 @@ class CelebrateTabView extends StatelessWidget {
               color: const Color(0xFF4F697C),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          CaptureDetailCard(
-            showShareButton: false,
-            topTag: topTags,
+          Expanded(
+            child: ListView.separated(
+              shrinkWrap: true,
+              itemCount: captureList.length,
+              itemBuilder: (context, index) {
+                return CaptureDetailCard(
+                  showShareButton: isImproves,
+                  topTag: topTags,
+                  captureItem: captureList[index],
+                );
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return const SizedBox(
+                  height: 15,
+                );
+              },
+            ),
           )
         ],
       ),
@@ -350,7 +338,7 @@ class CelebrateTabView extends StatelessWidget {
           onTap: () async {
             Navigator.of(context, rootNavigator: true)
                 .push(SuperPowerScreen.pageRoute(SuperPowerScreen(
-              title: 'Superpowers',
+              title: isImproves ? 'Blindspots' : 'Superpowers',
               topTagList: topTags,
             )));
           },

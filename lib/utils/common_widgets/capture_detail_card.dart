@@ -16,10 +16,13 @@ class CaptureDetailCard extends StatefulWidget {
   // final Colleague colleagueData;
   final List<TopTag> topTag;
 
+  final dynamic captureItem;
+
   CaptureDetailCard({
     // @required this.feedbackItem,
     @required this.showShareButton,
     @required this.topTag,
+    @required this.captureItem,
     // this.colleagueData
   });
 
@@ -32,6 +35,7 @@ class CaptureDetailCardState extends State<CaptureDetailCard> {
   @override
   Widget build(BuildContext context) {
     String imageAssetName = 'assets/positive_feedback.png';
+    String improveAssetName = 'assets/negative_feedback.png';
     String feedbackTypeName = 'Unknown';
     String feedbackSharerName = 'Unknown';
     // if (widget.feedbackItem.sharedBy != null) {
@@ -66,7 +70,9 @@ class CaptureDetailCardState extends State<CaptureDetailCard> {
                       height: 56,
                       width: 56,
                       child: Image(
-                        image: AssetImage(imageAssetName),
+                        image: AssetImage(widget.showShareButton
+                            ? improveAssetName
+                            : imageAssetName),
                       ),
                     ),
                   ],
@@ -87,7 +93,7 @@ class CaptureDetailCardState extends State<CaptureDetailCard> {
                             children: [
                               Expanded(
                                 child: Text(
-                                  'widget.feedbackItem.feedbackText',
+                                  widget.captureItem['capture'],
                                   style: AppTextTheme.openSans(
                                       fontSize: 15.0,
                                       fontWeight: FontWeight.w700,
@@ -115,12 +121,12 @@ class CaptureDetailCardState extends State<CaptureDetailCard> {
                     const SizedBox(
                       height: 5,
                     ),
-                    _colleagueTopTags(widget.topTag),
+                    _colleagueTopTags(widget.captureItem['tags_list']),
                     const SizedBox(height: 5.0),
                     Row(
                       children: [
                         Text(
-                          'Captured by ' + feedbackSharerName,
+                          'Captured by ' + widget.captureItem['capture_by'],
                           style: AppTextTheme.openSans(
                               fontSize: 12.0,
                               fontWeight: FontWeight.w600,
@@ -138,7 +144,7 @@ class CaptureDetailCardState extends State<CaptureDetailCard> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  'Shared on ' + formatter.format(DateTime.now()),
+                  'Shared on ' + widget.captureItem['shared_on'],
                   style: AppTextTheme.openSans(
                       fontSize: 12.0,
                       fontWeight: FontWeight.w600,
@@ -153,11 +159,10 @@ class CaptureDetailCardState extends State<CaptureDetailCard> {
     );
   }
 
-  Widget _colleagueTopTags(List<TopTag> topTags) {
+  Widget _colleagueTopTags(List<String> topTags) {
     final topTagCells = topTags.map((topTag) {
-      final captureTag = topTag.captureTag;
-      return SharedButtons.captureTagButtonV3(
-        tag: captureTag,
+      return SharedButtons.captureTagButtonV4(
+        tag: topTag,
         disableInkSplash: true,
         onPressed: () async {
           // Tags on colleague card.
@@ -170,7 +175,8 @@ class CaptureDetailCardState extends State<CaptureDetailCard> {
     int noOfEmptyCellsRequired = 3 - topTagCells.length;
 
     for (int counter = 0; counter < noOfEmptyCellsRequired; counter++) {
-      final emptyCell = SharedButtons.emptyCaptureTagButton();
+      final emptyCell =
+          SharedButtons.emptyCaptureTagButton(width: 1, height: 1);
       topTagCells.add(emptyCell);
     }
 
